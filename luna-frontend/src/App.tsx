@@ -5,7 +5,7 @@ function App() {
   return (
     <>
       <div>
-        <p>app</p>
+        <p>Hello From Frontend!</p>
       </div>
     </>
   )
