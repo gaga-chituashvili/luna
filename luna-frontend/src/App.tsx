@@ -1,13 +1,16 @@
 import './App.css'
+import { Routes, Route } from 'react-router-dom'
+import { RoutesConfig } from './routes/Routes'
 
-function App() {
-
+const App = () => {
   return (
-    <>
-      <div>
-        <p>Hello From Frontend!</p>
-      </div>
-    </>
+    <div>
+     <Routes>
+      {RoutesConfig.map(({ path, element }) => (
+        <Route key={path} path={path} element={element} />
+      ))}
+    </Routes>
+    </div>
   )
 }
 
