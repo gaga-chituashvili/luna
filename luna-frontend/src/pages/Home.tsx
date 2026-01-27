@@ -1,9 +1,9 @@
-import { Header } from '../component/Header'
+import { Shop } from "../component/Shop"
 
 export const Home = () => {
   return (
     <>
-    <Header/>
+      <Shop />
     </>
   )
 }

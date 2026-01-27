@@ -1,7 +1,7 @@
 
 import { Search, User, ShoppingCart } from 'lucide-react'
-import logo from '../assets/Logo2.png'
-import { ROUTES } from '../routes/paths'
+import logo from '../../assets/Logo2.png'
+import { ROUTES } from '../../routes/paths'
 import NavItem from './NavItem'
 
 export const Header = () => {
@@ -9,10 +9,14 @@ export const Header = () => {
     <header className=" w-full
         flex items-center justify-between
         px-16 py-6
-        rounded-full
-        bg-black/40 backdrop-blur-md
-        text-white">
-        <img src={logo} alt="Luna logo" className="h-8" />
+        shadow-lg
+        bg-gradient-to-r
+      from-[#2b1b16]
+      via-[#1a0f0c]
+      to-black
+      text-white
+        ">
+        <img src={logo} alt="Luna logo" className="h-8 cursor-pointer" />
         <nav>
           <ul className="flex items-center gap-10 text-sm tracking-wide">
             <NavItem to={ROUTES.home}>Home</NavItem>
