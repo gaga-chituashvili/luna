@@ -1,5 +1,5 @@
-import { Button } from "../ui/Button"
-import homecover from "../../assets/homecover.png"
+import { Button } from "../ui/Button";
+import homecover from "../../assets/homecover.png";
 
 export const AboutLuna = () => {
   return (
@@ -13,7 +13,6 @@ export const AboutLuna = () => {
         bg-gradient-to-br from-black via-[#1a0f0a] to-[#2b1a12]
       "
     >
-      
       <h4
         className="
           text-center
@@ -32,7 +31,8 @@ export const AboutLuna = () => {
           text-gray-300
         "
       >
-        Luna was created for people who see coffee as a <br className="hidden sm:block" />
+        Luna was created for people who see coffee as a{" "}
+        <br className="hidden sm:block" />
         moment of pause, not rush.
       </p>
 
@@ -50,7 +50,6 @@ export const AboutLuna = () => {
         Discover Our Story
       </Button>
 
-      
       <div
         className="
           mt-16
@@ -72,5 +71,5 @@ export const AboutLuna = () => {
         />
       </div>
     </section>
-  )
-}
+  );
+};
