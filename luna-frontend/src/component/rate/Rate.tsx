@@ -33,7 +33,6 @@ export const Rate = () => {
 
   return (
     <section className="w-full py-28 px-6 bg-black text-white text-center relative overflow-visible">
-      {/* Title */}
       <h4 className="text-3xl md:text-4xl font-light mb-16">
         Trusted by{" "}
         <span className="text-[#B8735A]">
@@ -43,7 +42,6 @@ export const Rate = () => {
         across the city
       </h4>
 
-      {/* Arrows */}
       <div className="absolute left-6 top-1/2 -translate-y-1/2 z-10 hidden md:block cursor-pointer rate-prev">
         <ArrowBigLeft size={36} className="text-[#B8735A]" />
       </div>
@@ -52,7 +50,6 @@ export const Rate = () => {
         <ArrowBigRight size={36} className="text-[#B8735A]" />
       </div>
 
-      {/* Slider */}
       <Swiper
         modules={[Navigation, Pagination]}
         navigation={{
