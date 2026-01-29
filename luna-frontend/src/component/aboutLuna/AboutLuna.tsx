@@ -36,19 +36,7 @@ export const AboutLuna = () => {
         moment of pause, not rush.
       </p>
 
-      <Button
-        className="
-          mt-2
-          rounded-full
-          px-8 py-3
-          bg-[#8b5a43]
-          hover:bg-[#a36a4f]
-          transition
-          text-sm
-        "
-      >
-        Discover Our Story
-      </Button>
+      <Button variant="default">Discover Our Story</Button>
 
       <div
         className="

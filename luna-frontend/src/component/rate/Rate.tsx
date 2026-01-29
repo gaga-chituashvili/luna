@@ -6,31 +6,37 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-export const Rate = () => {
-  const reviews = [
-    {
-      name: "David M.",
-      position: "Marketing Manager",
-      rating: 5,
-      comment:
-        "I tried Luna out of curiosity, but stayed for the quality. Every blend feels carefully crafted, and you can really tell the difference from mass-market coffee.",
-    },
-    {
-      name: "Anna K.",
-      position: "Product Designer",
-      rating: 5,
-      comment:
-        "Luna has become part of my morning routine. The taste is smooth, balanced, and never overwhelming. It’s the kind of coffee that helps you start the day calmly and focused.",
-    },
-    {
-      name: "Nino G.",
-      position: "Freelance Illustrator",
-      rating: 5,
-      comment:
-        "Luna is not just coffee — it’s a small daily ritual. I love how consistent the flavor is and how it fits perfectly into slow, creative mornings.",
-    },
-  ];
+type Rate = {
+  name: string;
+  position: string;
+  rating: number;
+  comment: string;
+};
+const reviews: Rate[] = [
+  {
+    name: "David M.",
+    position: "Marketing Manager",
+    rating: 5,
+    comment:
+      "I tried Luna out of curiosity, but stayed for the quality. Every blend feels carefully crafted, and you can really tell the difference from mass-market coffee.",
+  },
+  {
+    name: "Anna K.",
+    position: "Product Designer",
+    rating: 5,
+    comment:
+      "Luna has become part of my morning routine. The taste is smooth, balanced, and never overwhelming. It’s the kind of coffee that helps you start the day calmly and focused.",
+  },
+  {
+    name: "Nino G.",
+    position: "Freelance Illustrator",
+    rating: 5,
+    comment:
+      "Luna is not just coffee — it’s a small daily ritual. I love how consistent the flavor is and how it fits perfectly into slow, creative mornings.",
+  },
+];
 
+export const Rate = () => {
   return (
     <section className="w-full py-28 px-6 bg-black text-white text-center relative overflow-visible">
       <h4 className="text-3xl md:text-4xl font-light mb-16">
@@ -90,7 +96,7 @@ export const Rate = () => {
                 rounded-3xl
                 px-8 py-10
                 h-full
-                flex flex-col
+                flex flex-col items-center
                 gap-4
               "
             >

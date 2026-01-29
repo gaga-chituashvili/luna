@@ -1,7 +1,10 @@
-import coffee from "../assets/coffee.png"
-import { Button } from "../component/ui/Button"
+import coffee from "../assets/coffee.png";
+import { Button } from "../component/ui/Button";
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../routes/paths";
 
 export const Shop = () => {
+  const navigate = useNavigate();
   return (
     <section
       className="
@@ -28,23 +31,15 @@ export const Shop = () => {
         </h2>
 
         <div className="flex gap-x-4">
-          <Button variant="default">
-            Shop Coffee
-          </Button>
+          <Button variant="default">Shop Coffee</Button>
 
-          <Button
-            variant="secondary"
-          >
-            Our Story →
+          <Button onClick={() => navigate(ROUTES.ourStory)} variant="secondary">
+            Our Story
           </Button>
         </div>
       </article>
 
-      <img
-        src={coffee}
-        alt="coffeeimg"
-        className="drop-shadow-2xl"
-      />
+      <img src={coffee} alt="coffeeimg" className="drop-shadow-2xl" />
     </section>
-  )
-}
+  );
+};

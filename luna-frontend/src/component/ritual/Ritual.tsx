@@ -40,19 +40,7 @@ export const Ritual = () => {
         to your everyday moments.
       </p>
 
-      <Button
-        onClick={() => navigate(ROUTES.shop)}
-        variant="default"
-        className="
-          mt-4
-          rounded-full
-          px-8 py-3
-          bg-[#8b5a43]
-          hover:bg-[#a36a4f]
-          transition
-          text-sm
-        "
-      >
+      <Button onClick={() => navigate(ROUTES.shop)} variant="default">
         Shop Coffee <MoveRight />
       </Button>
     </section>

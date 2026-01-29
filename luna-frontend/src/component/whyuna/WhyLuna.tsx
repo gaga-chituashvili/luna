@@ -2,7 +2,13 @@ import lunaframe1 from "../../assets/lunaframe1.png";
 import lunaframe2 from "../../assets/lunaframe2.png";
 import lunaframe3 from "../../assets/lunaframe3.png";
 
-const CardData = [
+type WhyLuna = {
+  img: string;
+  title: string;
+  text: string;
+};
+
+const CardData: WhyLuna[] = [
   {
     img: lunaframe1,
     title: "Carefully Sourced Beans",
