@@ -7,6 +7,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 type Rate = {
+  id: number;
   name: string;
   position: string;
   rating: number;
@@ -14,6 +15,7 @@ type Rate = {
 };
 const reviews: Rate[] = [
   {
+    id: 1,
     name: "David M.",
     position: "Marketing Manager",
     rating: 5,
@@ -21,6 +23,7 @@ const reviews: Rate[] = [
       "I tried Luna out of curiosity, but stayed for the quality. Every blend feels carefully crafted, and you can really tell the difference from mass-market coffee.",
   },
   {
+    id: 2,
     name: "Anna K.",
     position: "Product Designer",
     rating: 5,
@@ -28,6 +31,7 @@ const reviews: Rate[] = [
       "Luna has become part of my morning routine. The taste is smooth, balanced, and never overwhelming. It’s the kind of coffee that helps you start the day calmly and focused.",
   },
   {
+    id: 3,
     name: "Nino G.",
     position: "Freelance Illustrator",
     rating: 5,
@@ -78,9 +82,9 @@ export const Rate = () => {
         }}
         className="max-w-6xl mx-auto"
       >
-        {reviews.map((review, i) => (
+        {reviews.map((review) => (
           <SwiperSlide
-            key={i}
+            key={review.id}
             className="
               transition-transform duration-500 ease-in-out
               scale-90 opacity-70
