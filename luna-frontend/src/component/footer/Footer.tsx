@@ -9,6 +9,13 @@ import {
   Copyright,
 } from "lucide-react";
 
+const Social = [
+  { Icon: Youtube, link: "#" },
+  { Icon: Instagram, link: "#" },
+  { Icon: Facebook, link: "#" },
+  { Icon: Linkedin, link: "#" },
+];
+
 export const Footer = () => {
   return (
     <footer className="w-full bg-gradient-to-br from-black via-[#1a0f0a] to-[#2b1a12] text-white  px-12 py-14">
@@ -71,7 +78,7 @@ export const Footer = () => {
           </div>
 
           <div className="flex gap-3">
-            {[Youtube, Instagram, Facebook, Linkedin].map((Icon, i) => (
+            {Social.map(({ Icon }, i) => (
               <div
                 key={i}
                 className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition cursor-pointer"
