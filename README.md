@@ -36,7 +36,3 @@
   - Database integration
 - Scalable project architecture
 
----
-
-## 📁 Project Structure
-
