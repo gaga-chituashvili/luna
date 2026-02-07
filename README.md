@@ -17,7 +17,7 @@
 - Responsive & mobile-first UI
 
 
-📁 Project Structure
+📁 Project Structure(Front-end)
 ```
 ├── README.md                  # Project documentation and setup instructions
 ├── eslint.config.js            # ESLint configuration for code quality
@@ -95,7 +95,33 @@
 - Modular folder structure
 - Ready for authentication & database integration
 
----
+
+📁 Project Structure(backend)
+```
+luna-backend/
+├── src/
+│   ├── app.js                    # Application entry point
+│   ├── middlewares/
+│   │   ├── auth.middlewares.js   # JWT authentication middleware
+│   │   └── luna.middlewares.js   # Custom middlewares
+│   ├── models/
+│   │   ├── user-schema.js        # User database model
+│   │   └── luna-schema.js        # Todo database model
+│   ├── routes/
+│   │   ├── auth-route.js         # Authentication routes
+│   │   └── luna-route.js         # Todo routes
+│   ├── services/
+│   │   ├── auth.services.js      # Authentication business logic
+│   │   └── luna.service.js       # Todo business logic
+│   └── utils/
+│       ├── db.js                 # Database configuration
+│       ├── jwt.js                # JWT utilities
+│       └── swaggerConfig.js      # Swagger setup
+├── .env                          # Environment variables
+├── .gitignore                    # Git ignore rules
+├── package.json                  # Dependencies
+└── README.md                     # Documentation
+```
 
 ## ✨ Key Features (Current & Planned)
 
