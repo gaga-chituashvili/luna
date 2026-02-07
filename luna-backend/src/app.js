@@ -8,32 +8,31 @@ const bodyParser = require("body-parser");
 
 const lunaRouter = require("./routes/luna-route");
 const authRouter = require("./routes/auth-route");
-const sequelize = require("./utils/db");
+const { sequelize } = require("./utils/db");
+
+const { UserSchema } = require("./models/user-schema");
+const { TodoSchema } = require("./models/luna-schema");
 
 const swaggerUI = require("swagger-ui-express");
 const { generateOpenApiDocs } = require("./utils/swaggerConfig");
 const swaggerDoc = generateOpenApiDocs();
 
-// Middlewares
 app.use(bodyParser.json());
 app.use(express.json());
 app.use("/docs", swaggerUI.serve, swaggerUI.setup(swaggerDoc));
 
-// Routes
 app.use("/v1", lunaRouter);
 app.use("/auth", authRouter);
 
-// Database
 sequelize
-  .sync()
+  .sync({ force: false })
   .then(() => {
-    console.log("Database synchronized");
+    console.log("Database synchronized - Tables created!");
   })
   .catch((error) => {
-    console.log(`Could not connect to DB: ${error}`);
+    console.log(`DB Error: ${error.message}`);
   });
 
-// Start server
 app.listen(port, () => {
-  console.log(`Server is listening at http://localhost:${port}`);
+  console.log(`Server listening at http://localhost:${port}`);
 });

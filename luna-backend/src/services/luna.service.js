@@ -1,17 +1,16 @@
-const { TodoSchema } = require('../models/luna-schema');
-const { z } = require('zod');
+const { TodoSchema } = require("../models/luna-schema");
+const { z } = require("zod");
 
 const todoCreationSchema = z.object({
   title: z.string(),
   description: z.string(),
   complated: z.boolean().default(false),
-  priority: z.enum(['low', 'medium', 'high']),
+  priority: z.enum(["low", "medium", "high"]),
   dueDate: z.string().nullable(true),
 });
 
 async function createTaskService(req, res) {
   const newTask = req.body;
-
 
   const validateBody = todoCreationSchema.safeParse(newTask);
 
@@ -26,26 +25,26 @@ async function createTaskService(req, res) {
   if (!newTodo) {
     return res.status(500).json({
       success: false,
-      message: 'Failed to create a new task',
+      message: "Failed to create a new task",
     });
   }
 
   return res.status(201).json({
     success: true,
-    message: 'Task has been created successfully!',
+    message: "Task has been created successfully!",
     data: newTodo,
   });
 }
 
 async function getAll(req, res) {
   const allTodo = await TodoSchema.findAll({
-    attributes: { exclude: ['updatedAt'] },
+    attributes: { exclude: ["updatedAt"] },
   });
 
   if (!allTodo || allTodo.length === 0) {
     return res.status(404).json({
       success: false,
-      message: 'No tasks found',
+      message: "No tasks found",
     });
   }
 
@@ -58,7 +57,7 @@ async function getAll(req, res) {
 function getOne(req, res) {
   return res.json({
     success: true,
-    message: 'Successfully returned todo',
+    message: "Successfully returned todo",
     data: req.task,
   });
 }
@@ -71,7 +70,7 @@ async function updateTask(req, res) {
       title: z.string().optional(),
       description: z.string().optional(),
       complated: z.boolean().default(false).optional(),
-      priority: z.enum(['low', 'medium', 'high']).optional(),
+      priority: z.enum(["low", "medium", "high"]).optional(),
       dueDate: z.string().optional(),
     })
     .strict();
@@ -91,13 +90,13 @@ async function updateTask(req, res) {
   if (!updateTask) {
     return res.status(500).json({
       success: false,
-      message: 'Failed to update task',
+      message: "Failed to update task",
     });
   }
 
   return res.json({
     success: true,
-    message: 'Task has been updated successfully!',
+    message: "Task has been updated successfully!",
   });
 }
 
@@ -107,13 +106,13 @@ async function deleteTask(req, res) {
   if (!deleteTask) {
     return res.status(500).json({
       success: false,
-      message: 'Failed to delete task',
+      message: "Failed to delete task",
     });
   }
 
   return res.status(200).json({
     success: true,
-    message: 'Task Completed successfully',
+    message: "Task Completed successfully",
   });
 }
 

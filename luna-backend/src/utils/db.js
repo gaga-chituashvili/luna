@@ -1,6 +1,5 @@
 const { Sequelize } = require("sequelize");
 const dotenv = require("dotenv");
-
 dotenv.config({ path: "./.env" });
 
 const sequelize = new Sequelize(
@@ -14,12 +13,11 @@ const sequelize = new Sequelize(
     logging: false,
     dialectOptions: {
       ssl: {
-        require: true,           
-        rejectUnauthorized: false 
+        require: true,
+        rejectUnauthorized: false
       }
     },
   }
 );
 
-module.exports = sequelize;
-
+module.exports = { sequelize };
