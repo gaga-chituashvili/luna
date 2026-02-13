@@ -1,21 +1,18 @@
-const { z } = require('zod');
+const { z } = require("zod");
 const {
   extendZodWithOpenApi,
   OpenApiGeneratorV3,
   OpenAPIRegistry,
-} = require('@asteasolutions/zod-to-openapi');
+} = require("@asteasolutions/zod-to-openapi");
 
-const dotenv = require('dotenv');
-dotenv.config({ path: './.env', quiet: true });
+const dotenv = require("dotenv");
+dotenv.config({ path: "./.env", quiet: true });
 
-
-const { todoCreationSchema } = require('../services/luna.service');
+const { todoCreationSchema } = require("../services/luna.service");
 
 const PORT = process.env.PORT || 3000;
 
-
 extendZodWithOpenApi(z);
-
 
 const todoCreation201 = z
   .object({
@@ -29,29 +26,23 @@ const todoCreation201 = z
         priority: z.string(),
         dueDate: z.date(),
         createdAt: z.date(),
-      })
+      }),
     ),
   })
-  .openapi('CreateTaskResponse');
+  .openapi("CreateCoffeeProducts");
 
-/**
- * Registry
- */
 const registry = new OpenAPIRegistry();
 
-/**
- * Path registration
- */
 registry.registerPath({
-  method: 'post',
-  path: '/v1/task/create',
-  tags: ['Task Management'],
-  summary: 'Create a new task',
+  method: "post",
+  path: "/v1/product/create",
+  tags: ["Product Management"],
+  summary: "Create a new product",
   request: {
     body: {
-      description: 'Create a new task',
+      description: "Create a new product",
       content: {
-        'application/json': {
+        "application/json": {
           schema: todoCreationSchema,
         },
       },
@@ -59,9 +50,9 @@ registry.registerPath({
   },
   responses: {
     201: {
-      description: 'Task created successfully',
+      description: "Product created successfully",
       content: {
-        'application/json': {
+        "application/json": {
           schema: todoCreation201,
         },
       },
@@ -69,18 +60,15 @@ registry.registerPath({
   },
 });
 
-/**
- * OpenAPI document generator
- */
 function generateOpenApiDocs() {
   const generator = new OpenApiGeneratorV3(registry.definitions);
 
   return generator.generateDocument({
-    openapi: '3.0.0',
+    openapi: "3.0.0",
     info: {
-      title: 'Todo management app',
-      version: '1.0.0',
-      description: 'API documentation for todo app',
+      title: "Coffee management app",
+      version: "1.0.0",
+      description: "API documentation for coffee app",
     },
     servers: [
       {

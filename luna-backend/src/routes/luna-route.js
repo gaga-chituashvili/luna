@@ -1,7 +1,15 @@
 const express = require("express");
-const { createTaskService } = require("../services/luna.service");
-
 const router = express.Router();
-router.get("/task/create", createTaskService);
+
+const {
+  createProduct,
+  getAllProducts,
+} = require("../services/luna.service");
+
+
+router.post("/product/create", createProduct);
+
+
+router.get("/products", getAllProducts);
 
 module.exports = router;
