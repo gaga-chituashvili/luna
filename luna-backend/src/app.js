@@ -21,6 +21,8 @@ app.use(express.json());
 
 app.use("/docs", swaggerUI.serve, swaggerUI.setup(swaggerDoc));
 
+app.use("/uploads", express.static("uploads"));
+
 app.use("/auth", authRouter);
 app.use("/v1", lunaRouter);
 

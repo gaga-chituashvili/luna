@@ -5,55 +5,66 @@ const {
   OpenAPIRegistry,
 } = require("@asteasolutions/zod-to-openapi");
 
-const dotenv = require("dotenv");
-dotenv.config({ path: "./.env", quiet: true });
-
-const { todoCreationSchema } = require("../services/luna.service");
+require("dotenv").config({ path: "./.env", quiet: true });
 
 const PORT = process.env.PORT || 3000;
 
 extendZodWithOpenApi(z);
 
-const todoCreation201 = z
-  .object({
-    success: z.boolean(),
-    data: z.array(
-      z.object({
-        id: z.number(),
-        title: z.string(),
-        description: z.string(),
-        complated: z.boolean(),
-        priority: z.string(),
-        dueDate: z.date(),
-        createdAt: z.date(),
-      }),
-    ),
-  })
-  .openapi("CreateCoffeeProducts");
+const productSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  price: z.number(),
+  img: z.string(),
+  tag: z.string(),
+  createdAt: z.string().optional(),
+  updatedAt: z.string().optional(),
+});
+
+const createResponseSchema = z.object({
+  success: z.boolean(),
+  data: productSchema,
+});
+
+const getAllResponseSchema = z.object({
+  success: z.boolean(),
+  data: z.array(productSchema),
+});
 
 const registry = new OpenAPIRegistry();
 
+/* ---------- POST CREATE ---------- */
+
 registry.registerPath({
   method: "post",
-  path: "/v1/product/create",
+  path: "/v1/products",
   tags: ["Product Management"],
   summary: "Create a new product",
-  request: {
-    body: {
-      description: "Create a new product",
-      content: {
-        "application/json": {
-          schema: todoCreationSchema,
-        },
-      },
-    },
-  },
   responses: {
     201: {
       description: "Product created successfully",
       content: {
         "application/json": {
-          schema: todoCreation201,
+          schema: createResponseSchema,
+        },
+      },
+    },
+  },
+});
+
+/* ---------- GET ALL ---------- */
+
+registry.registerPath({
+  method: "get",
+  path: "/v1/products",
+  tags: ["Product Management"],
+  summary: "Get all products",
+  responses: {
+    200: {
+      description: "List of all products",
+      content: {
+        "application/json": {
+          schema: getAllResponseSchema,
         },
       },
     },
