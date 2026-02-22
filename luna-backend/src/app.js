@@ -7,6 +7,7 @@ const port = process.env.PORT || 3000;
 
 const authRouter = require("./routes/auth-route.js");
 const lunaRouter = require("./routes/luna-route.js");
+const rateRouter = require("./routes/rate-route.js");
 
 const { sequelize } = require("./utils/db");
 
@@ -14,17 +15,35 @@ require("./models/user-schema");
 require("./models/coffee-schema");
 
 const swaggerUI = require("swagger-ui-express");
-const { generateOpenApiDocs } = require("./utils/swaggerConfig");
-const swaggerDoc = generateOpenApiDocs();
+const { generateOpenApiDocs: generateProductDocs } = require("./utils/swaggerProductConfig.js");
+const { generateOpenApiDocs: generateRateDocs } = require("./utils/swaggerRateConfig.js");
+
+const productDoc = generateProductDocs();
+const rateDoc = generateRateDocs();
+
+const combinedDoc = {
+  ...productDoc,
+  paths: {
+    ...productDoc.paths,
+    ...rateDoc.paths,
+  },
+  components: {
+    schemas: {
+      ...productDoc.components?.schemas,
+      ...rateDoc.components?.schemas,
+    },
+  },
+};
 
 app.use(express.json());
 
-app.use("/docs", swaggerUI.serve, swaggerUI.setup(swaggerDoc));
+app.use("/docs", swaggerUI.serve, swaggerUI.setup(combinedDoc));
 
 app.use("/uploads", express.static("uploads"));
 
 app.use("/auth", authRouter);
 app.use("/v1", lunaRouter);
+app.use("/v1", rateRouter);
 
 sequelize
   .sync({ force: false })
