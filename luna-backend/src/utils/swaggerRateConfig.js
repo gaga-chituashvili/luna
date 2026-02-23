@@ -40,6 +40,7 @@ registry.registerPath({
   path: "/v1/rates",
   tags: ["Rate Management"],
   summary: "Create a new rate",
+  security: [{ bearerAuth: [] }],
   responses: {
     201: {
       description: "Rate created successfully",
@@ -72,7 +73,7 @@ registry.registerPath({
 });
 
 function generateOpenApiDocs() {
-  const generator = new OpenApiGeneratorV3(registry.definitions); 
+  const generator = new OpenApiGeneratorV3(registry.definitions);
 
   return generator.generateDocument({
     openapi: "3.0.0",
@@ -80,6 +81,15 @@ function generateOpenApiDocs() {
       title: "Rate management app",
       version: "1.0.0",
       description: "API documentation for rate management",
+    },
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT",
+        },
+      },
     },
     servers: [
       {

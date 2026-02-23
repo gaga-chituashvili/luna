@@ -40,6 +40,7 @@ registry.registerPath({
   path: "/v1/products",
   tags: ["Product Management"],
   summary: "Create a new product",
+  security: [{ bearerAuth: [] }],
   responses: {
     201: {
       description: "Product created successfully",
@@ -80,6 +81,15 @@ function generateOpenApiDocs() {
       title: "Coffee management app",
       version: "1.0.0",
       description: "API documentation for coffee app",
+    },
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT",
+        },
+      },
     },
     servers: [
       {
