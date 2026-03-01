@@ -1,9 +1,12 @@
 const express = require("express");
 const dotenv = require("dotenv");
+const cors = require("cors");
 dotenv.config({ path: "./.env", quiet: true });
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+app.use(cors());
 
 const authRouter = require("./routes/auth-route.js");
 const lunaRouter = require("./routes/luna-route.js");
@@ -34,6 +37,7 @@ const combinedDoc = {
     },
   },
 };
+
 
 app.use(express.json());
 
