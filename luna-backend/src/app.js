@@ -1,6 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
+const path = require("path");
 dotenv.config({ path: "./.env", quiet: true });
 
 const app = express();
@@ -43,8 +44,10 @@ app.use(express.json());
 
 app.use("/docs", swaggerUI.serve, swaggerUI.setup(combinedDoc));
 
-app.use("/uploads", express.static("uploads"));
-
+app.use(
+  "/uploads",
+  express.static("/opt/render/project/src/uploads")
+);
 app.use("/auth", authRouter);
 app.use("/v1", lunaRouter);
 app.use("/v1", rateRouter);
