@@ -94,7 +94,7 @@ registry.registerPath({
   method: "patch",
   path: "/v1/products/{id}",
   tags: ["Product Management"],
-  summary: "Update product (partial update)",
+  summary: "Update product",
   security: [{ bearerAuth: [] }],
   request: {
     params: z.object({
