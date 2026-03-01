@@ -2,11 +2,11 @@ FROM node:20-slim
 
 WORKDIR /app
 
-COPY luna-backend/package*.json ./
+COPY package*.json ./
 
 RUN npm install
 
-COPY luna-backend .
+COPY . .
 
 ENV NODE_ENV=production
 
