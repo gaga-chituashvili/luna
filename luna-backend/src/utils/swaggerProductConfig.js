@@ -51,7 +51,7 @@ registry.registerPath({
             name: z.string(),
             price: z.number(),
             tag: z.string(),
-            img: z.any(), // file upload
+            img: z.any(),
           }),
         },
       },
