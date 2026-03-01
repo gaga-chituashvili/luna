@@ -99,6 +99,47 @@ function generateOpenApiDocs() {
   });
 }
 
+
+const updateRequestSchema = z.object({
+  name: z.string().optional(),
+  price: z.number().optional(),
+  tag: z.string().optional(),
+  img: z.string().optional(),
+});
+
+registry.registerPath({
+  method: "patch",
+  path: "/v1/products/{id}",
+  tags: ["Product Management"],
+  summary: "Update product (partial update)",
+  security: [{ bearerAuth: [] }],
+  request: {
+    params: z.object({
+      id: z.string(),
+    }),
+    body: {
+      content: {
+        "multipart/form-data": {
+          schema: updateRequestSchema,
+        },
+      },
+    },
+  },
+  responses: {
+    200: {
+      description: "Product updated successfully",
+      content: {
+        "application/json": {
+          schema: createResponseSchema,
+        },
+      },
+    },
+    404: {
+      description: "Product not found",
+    },
+  },
+});
+
 module.exports = {
   registry,
   generateOpenApiDocs,
