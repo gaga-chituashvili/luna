@@ -1,46 +1,69 @@
-const { CoffeeSchema } = require("../models/coffee-schema");
+const { Rate } = require("../models/rate-schema");
 const { z } = require("zod");
+
+/* ---------- VALIDATION SCHEMA ---------- */
 
 const createRateSchema = z.object({
   fullname: z.string().min(1),
-  position: z.coerce.number().int().positive(),
-  rate: z.string().url(),
+  position: z.string(),
+  rate: z.coerce.number().min(1).max(5),
   comment: z.string().min(1),
 });
 
+/* ---------- CREATE SINGLE RATE ---------- */
+
 async function createRate(req, res) {
-  const body = req.body;
+  try {
+    const body = req.body;
 
-  const validateBody = createRateSchema.safeParse(body);
+    const validateBody = createRateSchema.safeParse(body);
 
-  if (!validateBody.success) {
-    return res.status(400).json({
+    if (!validateBody.success) {
+      return res.status(400).json({
+        success: false,
+        message: validateBody.error.format(),
+      });
+    }
+
+    const newRate = await Rate.create(validateBody.data);
+
+    return res.status(201).json({
+      success: true,
+      message: "Rate created successfully",
+      data: newRate,
+    });
+  } catch (error) {
+    return res.status(500).json({
       success: false,
-      message: validateBody.error.format(),
+      message: error.message,
     });
   }
-
-  const newRate = await CoffeeSchema.create(validateBody.data);
-
-  return res.status(201).json({
-    success: true,
-    message: "Rate created successfully",
-    data: newRate,
-  });
 }
+
+/* ---------- GET ALL RATES ---------- */
 
 async function getAllRates(req, res) {
-  const rates = await CoffeeSchema.findAll();
+  try {
+    const rates = await Rate.findAll();
 
-  return res.json({
-    success: true,
-    data: rates,
-  });
+    return res.json({
+      success: true,
+      data: rates,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
 }
+
+/* ---------- BULK CREATE ---------- */
 
 async function createRatesBulk(req, res) {
   try {
     const { fullnames, positions, rates, comments } = req.body;
+
     if (!fullnames || !positions || !rates || !comments) {
       return res.status(400).json({
         success: false,
@@ -59,14 +82,14 @@ async function createRatesBulk(req, res) {
       });
     }
 
-    const products = fullnames.map((fullname, index) => ({
+    const reviews = fullnames.map((fullname, index) => ({
       fullname: fullname,
-      position: Number(positions[index]),
-      rate: rates[index],
+      position: positions[index],
+      rate: Number(rates[index]),
       comment: comments[index],
     }));
 
-    const created = await CoffeeSchema.bulkCreate(products);
+    const created = await Rate.bulkCreate(reviews);
 
     return res.status(201).json({
       success: true,

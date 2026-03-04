@@ -5,20 +5,31 @@ const {
   OpenAPIRegistry,
 } = require("@asteasolutions/zod-to-openapi");
 
-require("dotenv").config({ path: "./.env", quiet: true });
+require("dotenv").config();
 
 const PORT = process.env.PORT || 3000;
 
 extendZodWithOpenApi(z);
 
+const registry = new OpenAPIRegistry();
+
+/* ---------- SCHEMAS ---------- */
+
 const rateSchema = z.object({
   id: z.number(),
   fullname: z.string(),
-  position: z.number(),
-  rate: z.string(),
+  position: z.string(),
+  rate: z.number(),
   comment: z.string(),
   createdAt: z.string().optional(),
   updatedAt: z.string().optional(),
+});
+
+const createRateSchema = z.object({
+  fullname: z.string(),
+  position: z.string(),
+  rate: z.number(),
+  comment: z.string(),
 });
 
 const createResponseSchema = z.object({
@@ -31,8 +42,6 @@ const getAllResponseSchema = z.object({
   data: z.array(rateSchema),
 });
 
-const registry = new OpenAPIRegistry();
-
 /* ---------- POST CREATE ---------- */
 
 registry.registerPath({
@@ -41,6 +50,15 @@ registry.registerPath({
   tags: ["Rate Management"],
   summary: "Create a new rate",
   security: [{ bearerAuth: [] }],
+  request: {
+    body: {
+      content: {
+        "application/json": {
+          schema: createRateSchema,
+        },
+      },
+    },
+  },
   responses: {
     201: {
       description: "Rate created successfully",
@@ -71,6 +89,8 @@ registry.registerPath({
     },
   },
 });
+
+/* ---------- GENERATE DOC ---------- */
 
 function generateOpenApiDocs() {
   const generator = new OpenApiGeneratorV3(registry.definitions);
