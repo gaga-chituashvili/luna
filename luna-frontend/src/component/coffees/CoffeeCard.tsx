@@ -1,22 +1,16 @@
+import type { Coffee } from "../../api/type/coffees";
 import { Button } from "../ui/Button";
-
-type Coffee = {
-  id: number;
-  image: string;
-  name: string;
-  price: number;
-  tag: string;
-};
 
 type Props = {
   coffee: Coffee;
 };
 
+
 export const CoffeeCard = ({ coffee }: Props) => {
   return (
     <section className="bg-neutral-900 rounded-3xl p-6 text-center flex flex-col">
       <img
-        src={coffee.image}
+        src={coffee.img}
         alt={coffee.name}
         className="w-full h-full mx-auto object-cover"
       />

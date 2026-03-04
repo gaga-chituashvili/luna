@@ -1,40 +1,43 @@
-import coffeeimg from "../../assets/coffeeimg.png";
+import { useEffect, useState } from "react";
 import { CoffeeCard } from "./CoffeeCard";
 import { Button } from "../ui/Button";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../routes/paths";
-
-const coffees = [
-  {
-    id: 1,
-    image: coffeeimg,
-    name: "Luna Classic",
-    price: 28.5,
-    tag: "Balanced & Smooth",
-  },
-  {
-    id: 2,
-    image: coffeeimg,
-    name: "Luna Dark",
-    price: 30,
-    tag: "Bold & Intense",
-  },
-  {
-    id: 3,
-    image: coffeeimg,
-    name: "Luna Mild",
-    price: 26,
-    tag: "Soft & Light",
-  },
-];
+import CoffeesApi from "../../api/api /coffees";
+import { MoonLoader } from "react-spinners";
+import type { Coffee } from "../../api/type/coffees";
 
 export const Coffees = () => {
+  const [coffees, setCoffees] = useState<Coffee[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<Error | null>(null);
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    CoffeesApi()
+      .then((data) => {
+        setCoffees(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err as Error);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return <MoonLoader color="#000000" size={70} />;
+  }
+
+  if (error) {
+    return <p className="text-red-500 text-center">Failed to load coffees</p>;
+  }
 
   return (
     <section className="bg-black text-white py-20">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto px-6">
-        {coffees.map((coffee) => (
+        {coffees.slice(0, 3).map((coffee) => (
           <CoffeeCard key={coffee.id} coffee={coffee} />
         ))}
       </div>
