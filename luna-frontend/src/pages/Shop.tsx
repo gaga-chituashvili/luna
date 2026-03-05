@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { ShopPageCoffeeCard } from "../component/coffees/ShopPageCoffeeCard";
-import CoffeesApi from "../api/api /coffees";
 import type { Coffee } from "../api/type/coffees";
+import CoffeesApi from "../api/api /coffees";
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
+import { CoffeeShop } from "../component/shoop/CoffeeShop";
 
 export const Shop = () => {
   const [coffees, setCoffees] = useState<Coffee[]>([]);
@@ -19,5 +19,5 @@ export const Shop = () => {
     return <ClimbingBoxLoader color="#cfbfbf" size={20} />;
   }
 
-  return <ShopPageCoffeeCard allCoffees={coffees} />;
+  return <CoffeeShop coffees={coffees} />;
 };
