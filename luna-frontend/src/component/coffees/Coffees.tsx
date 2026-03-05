@@ -1,36 +1,23 @@
-import { useEffect, useState } from "react";
+
 import { CoffeeCard } from "./CoffeeCard";
 import { Button } from "../ui/Button";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../routes/paths";
-import CoffeesApi from "../../api/api /coffees";
+import { useCoffees } from "../../hooks/useRates";
 import { MoonLoader } from "react-spinners";
-import type { Coffee } from "../../api/type/coffees";
 
 export const Coffees = () => {
-  const [coffees, setCoffees] = useState<Coffee[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<Error | null>(null);
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    CoffeesApi()
-      .then((data) => {
-        setCoffees(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err as Error);
-        setLoading(false);
-      });
-  }, []);
+  const { data: coffees = [], isLoading, isError } = useCoffees();
 
-  if (loading) {
+
+  if (isLoading) {
     return <MoonLoader color="#000000" size={70} />;
   }
 
-  if (error) {
+  if (isError) {
     return <p className="text-red-500 text-center">Failed to load coffees</p>;
   }
 

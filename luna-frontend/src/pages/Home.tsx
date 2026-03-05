@@ -2,7 +2,7 @@ import { Shop } from "../component/Shop";
 import { Ritual } from "../component/ritual/Ritual";
 import { AboutLuna } from "../component/aboutLuna/AboutLuna";
 import { WhyLuna } from "../component/whyuna/WhyLuna";
-import { Rate } from "../component/rate/Rate";
+import { RateSlider } from "../component/rate/RateSlider";
 import { Coffees } from "../component/coffees/Coffees";
 
 export const Home = () => {
@@ -11,7 +11,7 @@ export const Home = () => {
       <Shop />
       <WhyLuna />
       <Coffees />
-      <Rate />
+      <RateSlider />
       <AboutLuna />
       <Ritual />
     </>

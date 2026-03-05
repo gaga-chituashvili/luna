@@ -5,42 +5,10 @@ import { ArrowBigLeft, ArrowBigRight, Star } from "lucide-react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { useRates } from "../../hooks/useRates";
 
-type Rate = {
-  id: number;
-  name: string;
-  position: string;
-  rating: number;
-  comment: string;
-};
-const reviews: Rate[] = [
-  {
-    id: 1,
-    name: "David M.",
-    position: "Marketing Manager",
-    rating: 5,
-    comment:
-      "I tried Luna out of curiosity, but stayed for the quality. Every blend feels carefully crafted, and you can really tell the difference from mass-market coffee.",
-  },
-  {
-    id: 2,
-    name: "Anna K.",
-    position: "Product Designer",
-    rating: 5,
-    comment:
-      "Luna has become part of my morning routine. The taste is smooth, balanced, and never overwhelming. It’s the kind of coffee that helps you start the day calmly and focused.",
-  },
-  {
-    id: 3,
-    name: "Nino G.",
-    position: "Freelance Illustrator",
-    rating: 5,
-    comment:
-      "Luna is not just coffee — it’s a small daily ritual. I love how consistent the flavor is and how it fits perfectly into slow, creative mornings.",
-  },
-];
-
-export const Rate = () => {
+export const RateSlider = () => {
+  const { data: reviews = [] } = useRates();
   return (
     <section className="w-full py-28 px-6 bg-black text-white text-center relative overflow-visible">
       <h4 className="text-3xl md:text-4xl font-light mb-16">
@@ -105,12 +73,12 @@ export const Rate = () => {
               "
             >
               <div>
-                <p className="font-semibold">{review.name}</p>
+                <p className="font-semibold">{review.fullname}</p>
                 <p className="text-sm text-gray-600">{review.position}</p>
               </div>
 
               <div className="flex items-center space-x-1 text-amber-400">
-                {Array.from({ length: review.rating }).map((_, index) => (
+                {Array.from({ length: review.rate }).map((_, index) => (
                   <Star key={index} className="w-5 h-5 fill-current" />
                 ))}
               </div>
