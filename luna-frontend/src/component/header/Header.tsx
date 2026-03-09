@@ -1,14 +1,13 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Search, User, ShoppingCart } from "lucide-react";
 import logo from "../../assets/Logo2.png";
 import { ROUTES } from "../../routes/paths";
 import NavItem from "./NavItem";
-import { AppContext } from "../../context/context";
 import { CartModal } from "../cart/CartModal";
+import { useCartStore } from "../../store/cartStore";
 
 export const Header = () => {
-  const { state } = useContext(AppContext);
-
+  const cart = useCartStore((state) => state.cart);
   const [openCart, setOpenCart] = useState(false);
 
   return (
@@ -35,9 +34,9 @@ export const Header = () => {
               onClick={() => setOpenCart(true)}
             />
 
-            {state.cart.length > 0 && (
+            {cart.length > 0 && (
               <span className="absolute -top-2 -right-2 bg-[#825444] text-xs rounded-full px-1.5 py-0.5">
-                {state.cart.length}
+                {cart.length}
               </span>
             )}
           </div>

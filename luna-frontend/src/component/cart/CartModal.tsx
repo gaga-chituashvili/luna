@@ -1,6 +1,5 @@
-import { useContext } from "react";
+import { useCartStore } from "../../store/cartStore";
 import { X, ChevronUp, ChevronDown } from "lucide-react";
-import { AppContext } from "../../context/context";
 
 type Props = {
   open: boolean;
@@ -8,21 +7,12 @@ type Props = {
 };
 
 export const CartModal = ({ open, onClose }: Props) => {
-  const { state, dispatch } = useContext(AppContext);
+  const cart = useCartStore((state) => state.cart);
+  const increase = useCartStore((state) => state.increase);
+  const decrease = useCartStore((state) => state.decrease);
+  const clearCart = useCartStore((state) => state.clearCart);
 
-  const up = (itemId: number) => {
-    dispatch({
-      type: "INCREASE_QUANTITY",
-      payload: itemId,
-    });
-  };
-
-  const down = (itemId: number) => {
-    dispatch({
-      type: "DECREASE_QUANTITY",
-      payload: itemId,
-    });
-  };
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   if (!open) return null;
 
@@ -37,11 +27,11 @@ export const CartModal = ({ open, onClose }: Props) => {
         </button>
 
         <h2 className="text-xl font-semibold mb-6">
-          Cart <sup>{state.cart.length}</sup>
+          Cart <sup>{cart.length}</sup>
         </h2>
 
         <article className="space-y-5 max-h-[300px] overflow-y-auto">
-          {state.cart.map((item) => (
+          {cart.map((item) => (
             <div key={item.id} className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <img
@@ -51,6 +41,7 @@ export const CartModal = ({ open, onClose }: Props) => {
 
                 <div>
                   <p className="text-sm">{item.name}</p>
+
                   <span className="text-sm font-medium">
                     GEL {(item.price * item.quantity).toFixed(2)}
                   </span>
@@ -60,22 +51,33 @@ export const CartModal = ({ open, onClose }: Props) => {
               <div className="border border-[#825444] rounded-xl px-2 py-1 flex flex-col items-center">
                 <ChevronUp
                   className="cursor-pointer"
-                  onClick={() => up(item.id)}
+                  onClick={() => increase(item.id)}
                 />
 
                 <span>{item.quantity}</span>
 
                 <ChevronDown
                   className="cursor-pointer"
-                  onClick={() => down(item.id)}
+                  onClick={() => decrease(item.id)}
                 />
               </div>
             </div>
           ))}
         </article>
 
-        <button className="mt-6 w-full bg-[#825444] text-white py-3 rounded-full text-sm">
+        <div className="mt-4 flex justify-between font-semibold">
+          <span>Total</span>
+          <span>GEL {total.toFixed(2)}</span>
+        </div>
+
+        <button className="mt-4 w-full bg-[#825444] text-white py-3 rounded-full text-sm">
           Check out
+        </button>
+        <button
+          className="mt-4 w-full bg-[#825444] text-white py-3 rounded-full text-sm"
+          onClick={clearCart}
+        >
+          Clear Cart
         </button>
       </div>
     </section>

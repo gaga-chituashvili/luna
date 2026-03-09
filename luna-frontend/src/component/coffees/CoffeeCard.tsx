@@ -1,6 +1,5 @@
-import { useContext } from "react";
+import { useCartStore } from "../../store/cartStore";
 import type { Coffee } from "../../api/type/coffees";
-import { AppContext } from "../../context/context";
 import { Button } from "../ui/Button";
 
 type Props = {
@@ -8,14 +7,7 @@ type Props = {
 };
 
 export const CoffeeCard = ({ coffee }: Props) => {
-  const { dispatch } = useContext(AppContext);
-
-  const handleAddToCart = () => {
-    dispatch({
-      type: "ADD_TO_CART",
-      payload: coffee,
-    });
-  };
+  const addToCart = useCartStore((state) => state.addToCart);
 
   return (
     <section className="bg-neutral-900 rounded-3xl p-6 text-center flex flex-col">
@@ -32,6 +24,7 @@ export const CoffeeCard = ({ coffee }: Props) => {
           <span>PRICE:</span>
           <span className="text-[#825444]">GEL {coffee.price}</span>
         </div>
+
         <div className="flex justify-between">
           <span>TAG:</span>
           <span className="text-[#825444]">{coffee.tag}</span>
@@ -40,7 +33,8 @@ export const CoffeeCard = ({ coffee }: Props) => {
 
       <div className="mt-auto flex gap-3 justify-center">
         <Button variant="outline">View details</Button>
-        <Button variant="default" onClick={handleAddToCart}>
+
+        <Button variant="default" onClick={() => addToCart(coffee)}>
           Add to cart
         </Button>
       </div>

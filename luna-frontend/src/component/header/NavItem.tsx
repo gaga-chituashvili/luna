@@ -16,7 +16,6 @@ const NavItem = ({ to, children }: NavItemProps) => {
       >
         {children}
 
-        {/* underline */}
         <span className="absolute left-0 -bottom-1 h-[2px] w-full scale-x-0 bg-[#c9a38d] transition-transform duration-300 group-hover:scale-x-100" />
       </NavLink>
     </li>
