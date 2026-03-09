@@ -1,6 +1,8 @@
 import { useCartStore } from "../../store/cartStore";
 import type { Coffee } from "../../api/type/coffees";
 import { Button } from "../ui/Button";
+import { Link } from "@tanstack/react-router";
+import { ROUTES } from "../../routes/paths";
 
 type Props = {
   coffee: Coffee;
@@ -32,7 +34,9 @@ export const CoffeeCard = ({ coffee }: Props) => {
       </div>
 
       <div className="mt-auto flex gap-3 justify-center">
-        <Button variant="outline">View details</Button>
+        <Link to={ROUTES.detail} params={{ coffeeId: coffee.id.toString() }}>
+          <Button variant="outline">View details</Button>
+        </Link>
 
         <Button variant="default" onClick={() => addToCart(coffee)}>
           Add to cart
