@@ -1,12 +1,22 @@
+import { useContext } from "react";
 import type { Coffee } from "../../api/type/coffees";
+import { AppContext } from "../../context/context";
 import { Button } from "../ui/Button";
 
 type Props = {
   coffee: Coffee;
 };
 
-
 export const CoffeeCard = ({ coffee }: Props) => {
+  const { dispatch } = useContext(AppContext);
+
+  const handleAddToCart = () => {
+    dispatch({
+      type: "ADD_TO_CART",
+      payload: coffee,
+    });
+  };
+
   return (
     <section className="bg-neutral-900 rounded-3xl p-6 text-center flex flex-col">
       <img
@@ -30,7 +40,9 @@ export const CoffeeCard = ({ coffee }: Props) => {
 
       <div className="mt-auto flex gap-3 justify-center">
         <Button variant="outline">View details</Button>
-        <Button variant="default">Add to cart</Button>
+        <Button variant="default" onClick={handleAddToCart}>
+          Add to cart
+        </Button>
       </div>
     </section>
   );

@@ -2,8 +2,12 @@ import { Search, User, ShoppingCart } from "lucide-react";
 import logo from "../../assets/Logo2.png";
 import { ROUTES } from "../../routes/paths";
 import NavItem from "./NavItem";
+import { AppContext } from "../../context/context";
+import { useContext } from "react";
 
 export const Header = () => {
+  const { state } = useContext(AppContext);
+
   return (
     <header
       className=" w-full
@@ -29,7 +33,15 @@ export const Header = () => {
       <div className="flex items-center gap-5">
         <Search className="w-5 h-5 cursor-pointer hover:opacity-70" />
         <User className="w-5 h-5 cursor-pointer hover:opacity-70" />
-        <ShoppingCart className="w-5 h-5 cursor-pointer hover:opacity-70" />
+        <div className="relative cursor-pointer">
+          <ShoppingCart className="w-5 h-5 hover:opacity-70" />
+
+          {state.cart.length > 0 && (
+            <span className="absolute -top-2 -right-2 bg-[#825444] text-xs rounded-full px-1.5 py-0.5">
+              {state.cart.length}
+            </span>
+          )}
+        </div>
       </div>
     </header>
   );

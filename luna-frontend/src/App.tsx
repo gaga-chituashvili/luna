@@ -1,9 +1,13 @@
-import "./App.css";
 import { RouterProvider } from "@tanstack/react-router";
 import { router } from "./router";
+import { AppContextProvider } from "./context/AppContextProvider";
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <AppContextProvider>
+      <RouterProvider router={router} />
+    </AppContextProvider>
+  );
 };
 
 export default App;
