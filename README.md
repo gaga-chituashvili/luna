@@ -19,70 +19,92 @@
 
 📁 Project Structure(Front-end)
 ```
-├── README.md                  # Project documentation and setup instructions
-├── eslint.config.js            # ESLint configuration for code quality
-├── index.html                  # Main HTML entry point (used by Vite)
-├── package.json                # Project dependencies and scripts
-├── package-lock.json           # Locked dependency versions
-├── postcss.config.js           # PostCSS configuration (used by Tailwind)
-├── tailwind.config.js          # Tailwind CSS configuration
-├── tsconfig.json               # Base TypeScript configuration
-├── tsconfig.app.json           # TypeScript config for the React app
-├── tsconfig.node.json          # TypeScript config for Node/Vite
-├── vite.config.ts              # Vite configuration (plugins, aliases, dev server)
-│
-├── public/                     # Public static files (served as-is)
-│   └── vite.svg                # Default Vite asset
-│
-├── src/                        # Application source code
-│   ├── main.tsx                # React application entry point
-│   ├── App.tsx                 # Root React component
-│   ├── App.css                 # App-level styles
-│   ├── index.css               # Global styles (Tailwind base styles)
-│
-│   ├── assets/                 # Images and static assets
+.
+├── README.md                     → Project documentation and setup instructions
+├── eslint.config.js              → ESLint configuration for code linting
+├── index.html                    → Root HTML file used by Vite
+├── package-lock.json             → Exact dependency versions
+├── package.json                  → Project dependencies and scripts
+├── postcss.config.js             → PostCSS configuration (used by Tailwind)
+├── public
+│   └── vite.svg                  → Static assets served directly by Vite
+├── src                           → Main source code of the application
+│   ├── App.css                   → Global styles for App component
+│   ├── App.tsx                   → Root React component
+│   ├── api                       → API related logic
+│   │   ├── api
+│   │   │   └── data.ts           → API functions for fetching data
+│   │   ├── hook                  → Custom API hooks (optional structure)
+│   │   ├── services              → API service layer (request logic)
+│   │   └── type
+│   │       ├── coffees.ts        → TypeScript types for coffee data
+│   │       └── rate.ts           → TypeScript types for rating data
+│   ├── assets                    → Static images and media files
 │   │   ├── Logo2.png
 │   │   ├── Luna.png
-│   │   └── coffee.png
-│
-│   ├── api/                    # API-related logic
-│   │   ├── services/           # API service calls (fetch/axios)
-│   │   ├── hook/               # Custom React hooks for API usage
-│   │   └── type/               # TypeScript types for API responses
-│
-│   ├── component/              # Reusable UI components
-│   │   ├── header/             # Header and navigation components
-│   │   ├── footer/             # Footer components
-│   │   ├── coffees/            # Coffee-related UI components
-│   │   ├── contact/            # Contact form and contact sections
-│   │   ├── aboutLuna/           # About section components
-│   │   ├── whyuna/              # Why Luna section
-│   │   ├── ritual/              # Ritual section
-│   │   ├── rate/                # Rating section
-│   │   └── ui/                  # Shared UI components (Button, etc.)
-│
-│   ├── pages/                  # Route-level pages
-│   │   ├── Home.tsx             # Home page
-│   │   ├── Shop.tsx             # Shop page
-│   │   ├── Contact.tsx          # Contact page
-│   │   └── OurStory.tsx         # Story/About page
-│
-│   ├── layout/                 # Application layouts
-│   │   └── MainLayout.tsx       # Main layout (Header + Footer + Outlet)
-│
-│   ├── routes/                 # Routing configuration
-│   │   ├── Routes.tsx           # React Router setup
-│   │   └── paths.ts             # Route path constants
-│
-│   ├── services/               # Frontend service logic (helpers, integrations)
-│
-│   ├── styles/                 # Theme and design tokens
-│   │   └── theme.ts             # Color palette and UI theme config
-│
-│   ├── lib/                    # Utility/helper functions
-│   │   └── utils.ts
-│
-│   └── swiper.d.ts             # TypeScript declarations for Swiper
+│   │   ├── coffee.png
+│   │   ├── coffeeimg.png
+│   │   ├── homecover.png
+│   │   ├── lunaframe1.png
+│   │   ├── lunaframe2.png
+│   │   └── lunaframe3.png
+│   ├── component                 → Reusable UI components
+│   │   ├── Shop.tsx              → Shop section component
+│   │   ├── aboutLuna
+│   │   │   └── AboutLuna.tsx     → About section component
+│   │   ├── cart
+│   │   │   └── CartModal.tsx     → Cart modal with cart logic
+│   │   ├── coffees
+│   │   │   ├── CoffeeCard.tsx    → Coffee item card component
+│   │   │   └── Coffees.tsx       → Coffee list display
+│   │   ├── contact
+│   │   │   ├── ContactForm.tsx   → Contact form UI
+│   │   │   ├── ContactInfo.tsx   → Contact information display
+│   │   │   └── LocationSection.tsx → Location / map section
+│   │   ├── footer
+│   │   │   └── Footer.tsx        → Website footer
+│   │   ├── header
+│   │   │   ├── Header.tsx        → Main navigation header
+│   │   │   └── NavItem.tsx       → Navigation link component
+│   │   ├── rate
+│   │   │   └── RateSlider.tsx    → Customer rating slider
+│   │   ├── ritual
+│   │   │   └── Ritual.tsx        → Coffee ritual section
+│   │   ├── shoop
+│   │   │   ├── CoffeeShop.tsx    → Shop page coffee list
+│   │   │   ├── FilterPanel.tsx   → Coffee filter panel
+│   │   │   ├── ShopPageCoffeeCard.tsx → Coffee card used on shop page
+│   │   │   └── useCoffeeFilter.ts → Hook for filtering coffee products
+│   │   ├── ui
+│   │   │   └── Button.tsx        → Reusable button component
+│   │   └── whyuna
+│   │       └── WhyLuna.tsx       → Why Luna section
+│   ├── hooks
+│   │   └── useRates.ts           → React Query hook for fetching rates
+│   ├── index.css                 → Global CSS styles
+│   ├── layout
+│   │   └── MainLayout.tsx        → Layout wrapper (Header + Footer + Outlet)
+│   ├── lib
+│   │   └── utils.ts              → Utility helper functions
+│   ├── main.tsx                  → React app entry point
+│   ├── pages                     → Page-level components used by router
+│   │   ├── Contact.tsx           → Contact page
+│   │   ├── Home.tsx              → Home page
+│   │   ├── OurStory.tsx          → Our story page
+│   │   └── Shop.tsx              → Shop page
+│   ├── router.tsx                → TanStack Router configuration
+│   ├── routes
+│   │   └── paths.ts              → Route path constants
+│   ├── store
+│   │   └── cartStore.ts          → Zustand cart state management
+│   ├── styles
+│   │   └── theme.ts              → Theme configuration
+│   └── swiper.d.ts               → TypeScript definitions for Swiper
+├── tailwind.config.js            → Tailwind CSS configuration
+├── tsconfig.app.json             → TypeScript config for app
+├── tsconfig.json                 → Base TypeScript configuration
+├── tsconfig.node.json            → Node specific TypeScript config
+└── vite.config.ts                → Vite build configuration
 
 ```
 
