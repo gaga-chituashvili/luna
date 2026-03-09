@@ -4,6 +4,7 @@ export const ROUTES = {
   shop: "/shop",
   contact: "/contact",
   cart: "/cart",
+  detail: "/shop/$coffeeId",
 } as const;
 
 export type RoutePaths = (typeof ROUTES)[keyof typeof ROUTES];

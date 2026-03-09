@@ -9,6 +9,7 @@ import { OurStory } from "./pages/OurStory";
 import Contact from "./pages/Contact";
 import MainLayout from "./layout/MainLayout";
 import { ROUTES } from "./routes/paths";
+import { DetailsCoffee } from "./component/Details/DetailsCoffee";
 
 const rootRoute = createRootRoute({
   component: MainLayout,
@@ -37,11 +38,18 @@ const contactRoute = createRoute({
   component: Contact,
 });
 
+const detailsCoffeeRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: ROUTES.detail,
+  component: DetailsCoffee,
+});
+
 const routeTree = rootRoute.addChildren([
   homeRoute,
   shopRoute,
   ourStoryRoute,
   contactRoute,
+  detailsCoffeeRoute,
 ]);
 
 export const router = createRouter({
