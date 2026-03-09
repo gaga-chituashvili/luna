@@ -120,29 +120,38 @@
 
 📁 Project Structure(backend)
 ```
-luna-backend/
-├── src/
-│   ├── app.js                    # Application entry point
-│   ├── middlewares/
-│   │   ├── auth.middlewares.js   # JWT authentication middleware
-│   │   └── luna.middlewares.js   # Custom middlewares
-│   ├── models/
-│   │   ├── user-schema.js        # User database model
-│   │   └── luna-schema.js        # Todo database model
-│   ├── routes/
-│   │   ├── auth-route.js         # Authentication routes
-│   │   └── luna-route.js         # Todo routes
-│   ├── services/
-│   │   ├── auth.services.js      # Authentication business logic
-│   │   └── luna.service.js       # Todo business logic
-│   └── utils/
-│       ├── db.js                 # Database configuration
-│       ├── jwt.js                # JWT utilities
-│       └── swaggerConfig.js      # Swagger setup
-├── .env                          # Environment variables
-├── .gitignore                    # Git ignore rules
-├── package.json                  # Dependencies
-└── README.md                     # Documentation
+├── Dockerfile                    → Configuration file for building a Docker container
+├── assets
+│   └── coffeeimg.png             → Static asset used by the backend (e.g. default image)
+├── config
+│   └── cloudinary.js             → Cloudinary configuration for image uploads/storage
+├── package-lock.json             → Exact dependency versions used in the project
+├── package.json                  → Project dependencies, scripts and metadata
+├── seed.js                       → Script used to populate the database with initial data
+└── src                           → Main backend application source code
+    ├── app.js                    → Entry point of the Express application
+    ├── middlewares               → Express middleware functions
+    │   ├── auth.middlewares.js   → Middleware for verifying user authentication
+    │   ├── isAdmin.js            → Middleware to check if the user has admin privileges
+    │   ├── luna.middlewares.js   → Custom middleware specific to Luna logic
+    │   └── upload.js             → Middleware for handling file uploads (e.g. multer)
+    ├── models                    → Database schemas/models (MongoDB/Mongoose)
+    │   ├── coffee-schema.js      → Schema describing coffee product structure
+    │   ├── rate-schema.js        → Schema for rating/review data
+    │   └── user-schema.js        → Schema for user accounts
+    ├── routes                    → API route definitions
+    │   ├── auth-route.js         → Authentication endpoints (login/register)
+    │   ├── luna-route.js         → Coffee-related API routes
+    │   └── rate-route.js         → Rating-related API routes
+    ├── services                  → Business logic layer (controllers/services)
+    │   ├── auth.services.js      → Logic for authentication and user management
+    │   ├── luna.service.js       → Logic for coffee-related operations
+    │   └── rate.service.js       → Logic for handling ratings
+    └── utils                     → Utility/helper functions
+        ├── db.js                 → Database connection setup
+        ├── jwt.js                → JWT token generation and verification helpers
+        ├── swaggerProductConfig.js → Swagger documentation config for product API
+        └── swaggerRateConfig.js    → Swagger documentation config for rating API
 ```
 
 ## ✨ Key Features (Current & Planned)
