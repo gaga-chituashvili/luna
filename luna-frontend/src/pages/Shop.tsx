@@ -1,6 +1,6 @@
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import { CoffeeShop } from "../component/shoop/CoffeeShop";
-import { useCoffees } from "../api/api /hooks/useRates";
+import { useCoffees } from "../api/api /hooks/useData";
 import { Header } from "../component/shoop/Header";
 
 export const Shop = () => {

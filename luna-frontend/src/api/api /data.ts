@@ -1,7 +1,7 @@
 import type { Coffee } from "../type/coffees";
 import type { Rate } from "../type/rate";
 
-const API_URL = "http://localhost:3000";
+const API_URL = "https://luna-fya4.onrender.com";
 
 type ProductApiResponse = {
   success: boolean;
