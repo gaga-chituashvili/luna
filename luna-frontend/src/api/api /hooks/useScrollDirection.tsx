@@ -11,9 +11,9 @@ export function useScrollDirection(threshold = 10) {
       if (Math.abs(currentScroll - lastScrollY.current) < threshold) return;
 
       if (currentScroll > lastScrollY.current && currentScroll > 80) {
-        setVisible(false); 
+        setVisible(false);
       } else {
-        setVisible(true); 
+        setVisible(true);
       }
 
       lastScrollY.current = currentScroll;

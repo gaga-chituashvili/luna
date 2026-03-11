@@ -4,7 +4,7 @@ import { useCoffees } from "../api/api /hooks/useRates";
 import { Header } from "../component/shoop/Header";
 
 export const Shop = () => {
-  const { data: coffees = [], isLoading } = useCoffees();
+  const { isLoading } = useCoffees();
 
   if (isLoading) {
     return <ClimbingBoxLoader color="#cfbfbf" size={20} />;
@@ -13,7 +13,7 @@ export const Shop = () => {
   return (
     <>
       <Header />
-      <CoffeeShop coffees={coffees} />
+      <CoffeeShop />
     </>
   );
 };

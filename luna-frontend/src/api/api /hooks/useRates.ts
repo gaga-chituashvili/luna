@@ -1,5 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import { CoffeesApi, RateApi } from "../../api /data";
+import { CoffeesApi, RateApi } from "../data";
+
+type CoffeeFilters = {
+  search?: string;
+  price?: [number, number];
+  tag?: string;
+};
 
 export const useRates = () => {
   return useQuery({
@@ -8,9 +14,9 @@ export const useRates = () => {
   });
 };
 
-export const useCoffees = () => {
+export const useCoffees = (filters?: CoffeeFilters) => {
   return useQuery({
-    queryKey: ["coffees"],
-    queryFn: CoffeesApi,
+    queryKey: ["coffees", filters],
+    queryFn: () => CoffeesApi(filters),
   });
 };

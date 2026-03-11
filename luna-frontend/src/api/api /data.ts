@@ -1,7 +1,7 @@
 import type { Coffee } from "../type/coffees";
 import type { Rate } from "../type/rate";
 
-const API_URL = "https://luna-fya4.onrender.com";
+const API_URL = "http://localhost:3000";
 
 type ProductApiResponse = {
   success: boolean;
@@ -13,10 +13,29 @@ type RateApiResponse = {
   data: Rate[];
 };
 
+type CoffeeFilters = {
+  search?: string;
+  price?: [number, number];
+  tag?: string;
+};
 
+const CoffeesApi = async (filters?: CoffeeFilters): Promise<Coffee[]> => {
+  const params = new URLSearchParams();
 
-const CoffeesApi = async (): Promise<Coffee[]> => {
-  const response = await fetch(`${API_URL}/v1/products`);
+  if (filters?.search) {
+    params.append("search", filters.search);
+  }
+
+  if (filters?.price) {
+    params.append("minPrice", filters.price[0].toString());
+    params.append("maxPrice", filters.price[1].toString());
+  }
+
+  if (filters?.tag && filters.tag !== "all") {
+    params.append("tag", filters.tag);
+  }
+
+  const response = await fetch(`${API_URL}/v1/products?${params.toString()}`);
 
   if (!response.ok) {
     throw new Error("Failed to fetch coffee data");
