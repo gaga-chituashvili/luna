@@ -5,15 +5,30 @@ import { ROUTES } from "../../routes/paths";
 import NavItem from "./NavItem";
 import { CartModal } from "../cart/CartModal";
 import { useCartStore } from "../../store/cartStore";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const Header = () => {
   const cart = useCartStore((state) => state.cart);
   const [openCart, setOpenCart] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
+  const handleLogoClick = () => {
+    if (location.pathname === ROUTES.home) {
+      window.location.reload();
+    } else {
+      navigate(ROUTES.home);
+    }
+  };
   return (
     <>
       <header className="w-full flex items-center justify-between px-16 py-6 shadow-lg bg-gradient-to-r from-[#2b1b16] via-[#1a0f0c] to-black text-white">
-        <img src={logo} alt="Luna logo" className="h-8 cursor-pointer" />
+        <img
+          src={logo}
+          alt="Luna logo"
+          className="h-8 cursor-pointer"
+          onClick={handleLogoClick}
+        />
 
         <nav>
           <ul className="flex items-center gap-10 text-sm tracking-wide">
