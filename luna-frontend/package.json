@@ -10,20 +10,28 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "@hookform/resolvers": "^5.2.2",
     "@radix-ui/react-slot": "^1.2.4",
     "@tanstack/react-query": "^5.90.21",
     "@tanstack/react-router": "^1.166.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "formik": "^2.4.9",
     "lucide-react": "^0.563.0",
     "rc-slider": "^11.1.9",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-hook-form": "^7.71.2",
     "react-phone-number-input": "^3.4.14",
     "react-router-dom": "^7.13.0",
     "react-spinners": "^0.17.0",
+    "sonner": "^2.0.7",
     "swiper": "^12.1.0",
     "tailwind-merge": "^3.4.0",
+    "yup": "^1.7.1",
+    "zod": "^4.3.6",
+    "zod-formik-adapter": "^2.0.0",
     "zustand": "^5.0.11"
   },
   "devDependencies": {
