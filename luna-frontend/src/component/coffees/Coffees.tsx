@@ -2,7 +2,7 @@ import { CoffeeCard } from "./CoffeeCard";
 import { Button } from "../ui/Button";
 import { useNavigate } from "@tanstack/react-router";
 import { ROUTES } from "../../routes/paths";
-import { useCoffees } from "../../api/api /hooks/useRates";
+import { useCoffees } from "../../api/api /hooks/useData";
 import { MoonLoader } from "react-spinners";
 
 export const Coffees = () => {
