@@ -1,7 +1,7 @@
 
 import { CoffeeCard } from "./CoffeeCard";
 import { Button } from "../ui/Button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "@tanstack/react-router";
 import { ROUTES } from "../../routes/paths";
 import { useCoffees } from "../../hooks/useRates";
 import { MoonLoader } from "react-spinners";
@@ -30,7 +30,7 @@ export const Coffees = () => {
       </div>
 
       <div className="flex justify-center mt-14">
-        <Button onClick={() => navigate(ROUTES.shop)}>View All Coffee</Button>
+        <Button onClick={() => navigate({ to: ROUTES.shop })}>View All Coffee</Button>
       </div>
     </section>
   );

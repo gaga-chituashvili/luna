@@ -5,21 +5,24 @@ import { ROUTES } from "../../routes/paths";
 import NavItem from "./NavItem";
 import { CartModal } from "../cart/CartModal";
 import { useCartStore } from "../../store/cartStore";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useRouterState, useNavigate } from "@tanstack/react-router";
 import { useScrollDirection } from "../../hooks/useScrollDirection";
 
 export const Header = () => {
   const cart = useCartStore((state) => state.cart);
   const [openCart, setOpenCart] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation();
   const visible = useScrollDirection();
 
+  const pathname = useRouterState({
+    select: (state) => state.location.pathname,
+  });
+
   const handleLogoClick = () => {
-    if (location.pathname === ROUTES.home) {
+    if (pathname === ROUTES.home) {
       window.location.reload();
     } else {
-      navigate(ROUTES.home);
+      navigate({ to: ROUTES.home });
     }
   };
   return (
