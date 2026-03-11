@@ -6,12 +6,14 @@ import NavItem from "./NavItem";
 import { CartModal } from "../cart/CartModal";
 import { useCartStore } from "../../store/cartStore";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useScrollDirection } from "../../hooks/useScrollDirection";
 
 export const Header = () => {
   const cart = useCartStore((state) => state.cart);
   const [openCart, setOpenCart] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const visible = useScrollDirection();
 
   const handleLogoClick = () => {
     if (location.pathname === ROUTES.home) {
@@ -22,7 +24,11 @@ export const Header = () => {
   };
   return (
     <>
-      <header className="w-full flex items-center justify-between px-16 py-6 shadow-lg bg-gradient-to-r from-[#2b1b16] via-[#1a0f0c] to-black text-white">
+      <header
+        className={`fixed top-0 left-0 w-full z-50 flex items-center justify-between px-16 py-6 shadow-lg bg-gradient-to-r from-[#2b1b16] via-[#1a0f0c] to-black text-white transition-transform duration-300 ${
+          visible ? "translate-y-0" : "-translate-y-full"
+        }`}
+      >
         <img
           src={logo}
           alt="Luna logo"
