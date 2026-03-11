@@ -1,7 +1,7 @@
 import { toast } from "sonner";
-import type { ContactFormData } from "../component/schemas/contactSchema";
+import type { ContactFormData } from "../../../component/schemas/contactSchema";
 import type { FormikHelpers } from "formik";
-import { sendContactEmail } from "../component/services/emailService";
+import { sendContactEmail } from "../../../component/services/emailService";
 
 export function useContactForm() {
   const handleSubmit = async (

@@ -1,6 +1,6 @@
 import coffee from "../assets/coffee.png";
 import { Button } from "../component/ui/Button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "@tanstack/react-router";
 import { ROUTES } from "../routes/paths";
 
 export const Shop = () => {
@@ -33,7 +33,7 @@ export const Shop = () => {
         <div className="flex gap-x-4">
           <Button variant="default">Shop Coffee</Button>
 
-          <Button onClick={() => navigate(ROUTES.ourStory)} variant="secondary">
+          <Button onClick={() => navigate({ to: ROUTES.ourStory })} variant="secondary">
             Our Story
           </Button>
         </div>

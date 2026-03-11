@@ -5,15 +5,39 @@ import { ROUTES } from "../../routes/paths";
 import NavItem from "./NavItem";
 import { CartModal } from "../cart/CartModal";
 import { useCartStore } from "../../store/cartStore";
+import { useRouterState, useNavigate } from "@tanstack/react-router";
+import { useScrollDirection } from "../../api/api /hooks/useScrollDirection";
 
 export const Header = () => {
   const cart = useCartStore((state) => state.cart);
   const [openCart, setOpenCart] = useState(false);
+  const navigate = useNavigate();
+  const visible = useScrollDirection();
 
+  const pathname = useRouterState({
+    select: (state) => state.location.pathname,
+  });
+
+  const handleLogoClick = () => {
+    if (pathname === ROUTES.home) {
+      window.location.reload();
+    } else {
+      navigate({ to: ROUTES.home });
+    }
+  };
   return (
     <>
-      <header className="w-full flex items-center justify-between px-16 py-6 shadow-lg bg-gradient-to-r from-[#2b1b16] via-[#1a0f0c] to-black text-white">
-        <img src={logo} alt="Luna logo" className="h-8 cursor-pointer" />
+      <header
+        className={`fixed top-0 left-0 w-full z-50 flex items-center justify-between px-16 py-6 shadow-lg bg-gradient-to-r from-[#2b1b16] via-[#1a0f0c] to-black text-white transition-transform duration-300 ${
+          visible ? "translate-y-0" : "-translate-y-full"
+        }`}
+      >
+        <img
+          src={logo}
+          alt="Luna logo"
+          className="h-8 cursor-pointer"
+          onClick={handleLogoClick}
+        />
 
         <nav>
           <ul className="flex items-center gap-10 text-sm tracking-wide">

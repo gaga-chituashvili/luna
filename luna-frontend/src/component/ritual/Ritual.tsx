@@ -1,5 +1,5 @@
 import { Button } from "../ui/Button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "@tanstack/react-router";
 import { ROUTES } from "../../routes/paths";
 import { MoveRight } from "lucide-react";
 
@@ -40,7 +40,7 @@ export const Ritual = () => {
         to your everyday moments.
       </p>
 
-      <Button onClick={() => navigate(ROUTES.shop)} variant="default">
+      <Button onClick={() => navigate({ to: ROUTES.shop })} variant="default">
         Shop Coffee <MoveRight />
       </Button>
     </section>

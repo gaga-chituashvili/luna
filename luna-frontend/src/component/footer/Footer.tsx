@@ -1,5 +1,5 @@
 import lunalogo from "../../assets/Logo2.png";
-import { NavLink } from "react-router-dom";
+import { Link } from "@tanstack/react-router";
 import { ROUTES } from "../../routes/paths";
 import {
   Youtube,
@@ -30,33 +30,33 @@ export const Footer = () => {
         <div>
           <h3 className="mb-4 font-semibold">Quick Links</h3>
           <ul className="flex flex-col gap-2 text-gray-300">
-            <NavLink className="text-[#D9D6D6] text-xl" to={ROUTES.home}>
+            <Link className="text-[#D9D6D6] text-xl" to={ROUTES.home}>
               Home
-            </NavLink>
-            <NavLink className="text-[#D9D6D6] text-xl" to={ROUTES.ourStory}>
+            </Link>
+            <Link className="text-[#D9D6D6] text-xl" to={ROUTES.ourStory}>
               Our Story
-            </NavLink>
-            <NavLink className="text-[#D9D6D6] text-xl" to={ROUTES.shop}>
+            </Link>
+            <Link className="text-[#D9D6D6] text-xl" to={ROUTES.shop}>
               Shop
-            </NavLink>
-            <NavLink className="text-[#D9D6D6] text-xl" to={ROUTES.contact}>
+            </Link>
+            <Link className="text-[#D9D6D6] text-xl" to={ROUTES.contact}>
               Contact
-            </NavLink>
+            </Link>
           </ul>
         </div>
 
         <div>
           <h3 className="mb-4 font-semibold">Contact</h3>
           <ul className="flex flex-col gap-2 text-gray-300">
-            <NavLink
+            <Link
               className="text-[#D9D6D6] text-xl"
               to="mailto:hello@luna.coffee"
             >
               hello@luna.coffee
-            </NavLink>
-            <NavLink className="text-[#D9D6D6] text-xl" to="tel:+995555123456">
+            </Link>
+            <Link className="text-[#D9D6D6] text-xl" to="tel:+995555123456">
               +995 555 123 456
-            </NavLink>
+            </Link>
             <span className="text-[#D9D6D6] text-xl">Tbilisi, Georgia</span>
           </ul>
         </div>
@@ -65,15 +65,15 @@ export const Footer = () => {
           <div>
             <h3 className="mb-4 font-semibold">Info</h3>
             <ul className="flex flex-col gap-2 text-gray-300">
-              <NavLink className="text-[#D9D6D6] text-xl" to="">
+              <Link className="text-[#D9D6D6] text-xl" to="">
                 Shipping & Returns
-              </NavLink>
-              <NavLink className="text-[#D9D6D6] text-xl" to="">
+              </Link>
+              <Link className="text-[#D9D6D6] text-xl" to="">
                 Privacy Policy
-              </NavLink>
-              <NavLink className="text-[#D9D6D6] text-xl" to="">
+              </Link>
+              <Link className="text-[#D9D6D6] text-xl" to="">
                 Terms & Conditions
-              </NavLink>
+              </Link>
             </ul>
           </div>
 
