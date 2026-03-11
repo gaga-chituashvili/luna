@@ -6,7 +6,7 @@ import NavItem from "./NavItem";
 import { CartModal } from "../cart/CartModal";
 import { useCartStore } from "../../store/cartStore";
 import { useRouterState, useNavigate } from "@tanstack/react-router";
-import { useScrollDirection } from "../../hooks/useScrollDirection";
+import { useScrollDirection } from "../../api/api /hooks/useScrollDirection";
 
 export const Header = () => {
   const cart = useCartStore((state) => state.cart);

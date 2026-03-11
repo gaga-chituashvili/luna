@@ -1,5 +1,5 @@
 import { useParams, Link } from "@tanstack/react-router";
-import { useCoffees } from "../../hooks/useRates";
+import { useCoffees } from "../../api/api /hooks/useRates";
 import { useCartStore } from "../../store/cartStore";
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import { ROUTES } from "../../routes/paths";
