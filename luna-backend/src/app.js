@@ -11,6 +11,7 @@ app.use(cors());
 const authRouter = require("./routes/auth-route.js");
 const lunaRouter = require("./routes/luna-route.js");
 const rateRouter = require("./routes/rate-route.js");
+const cartRouter = require("./routes/order-route.js");
 
 const { sequelize } = require("./utils/db");
 
@@ -45,6 +46,7 @@ app.use("/docs", swaggerUI.serve, swaggerUI.setup(combinedDoc));
 app.use("/auth", authRouter);
 app.use("/v1", lunaRouter);
 app.use("/v1", rateRouter);
+app.use("/v1", cartRouter);
 
 sequelize
   .sync({ force: false })
