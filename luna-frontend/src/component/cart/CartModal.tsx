@@ -24,7 +24,7 @@ export const CartModal = ({ open, onClose }: Props) => {
     }));
 
     try {
-      await axios.post("/v1/orders", { items });
+      await axios.post("https://luna-fya4.onrender.com/v1/orders", { items });
 
       clearCart();
       onClose();
