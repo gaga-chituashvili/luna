@@ -11,7 +11,7 @@ app.use(cors());
 const authRouter = require("./routes/auth-route.js");
 const lunaRouter = require("./routes/luna-route.js");
 const rateRouter = require("./routes/rate-route.js");
-const cartRouter = require("./routes/cart-route.js");
+const cartRouter = require("./routes/order-route.js");
 
 const { sequelize } = require("./utils/db");
 
