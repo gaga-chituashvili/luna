@@ -1,5 +1,6 @@
 import { useCartStore } from "../../store/cartStore";
 import { X, ChevronUp, ChevronDown } from "lucide-react";
+import axios from "axios";
 
 type Props = {
   open: boolean;
@@ -16,6 +17,21 @@ export const CartModal = ({ open, onClose }: Props) => {
 
   if (!open) return null;
 
+  const checkout = async () => {
+    const items = cart.map(({ id, quantity }) => ({
+      productId: id,
+      quantity,
+    }));
+
+    try {
+      await axios.post("/v1/orders", { items });
+
+      clearCart();
+      onClose();
+    } catch (error) {
+      console.error("Checkout failed:", error);
+    }
+  };
   return (
     <section className="fixed inset-0 z-50">
       <div className="absolute right-6 top-20 w-[380px] bg-[#F5F2F0] rounded-3xl p-6 text-[#825444] shadow-xl">
@@ -69,8 +85,10 @@ export const CartModal = ({ open, onClose }: Props) => {
           <span>Total</span>
           <span>GEL {total.toFixed(2)}</span>
         </div>
-
-        <button className="mt-4 w-full bg-[#825444] text-white py-3 rounded-full text-sm">
+        <button
+          onClick={checkout}
+          className="mt-4 w-full bg-[#825444] text-white py-3 rounded-full text-sm"
+        >
           Check out
         </button>
         <button
