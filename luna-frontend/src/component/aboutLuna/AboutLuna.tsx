@@ -1,8 +1,12 @@
 import { motion } from "framer-motion";
 import { Button } from "../ui/Button";
 import { ABOUT_LUNA } from "../../constants/homeData";
+import { useNavigate } from "@tanstack/react-router";
+import { ROUTES } from "@/routes/paths";
 
 export const AboutLuna = () => {
+  const navigate = useNavigate();
+
   return (
     <section
       className="
@@ -53,7 +57,12 @@ export const AboutLuna = () => {
         transition={{ duration: 0.6, delay: 0.3 }}
         viewport={{ once: true }}
       >
-        <Button variant="default">{ABOUT_LUNA.buttonText}</Button>
+        <Button
+          onClick={() => navigate({ to: ROUTES.ourStory })}
+          variant="default"
+        >
+          {ABOUT_LUNA.buttonText}
+        </Button>
       </motion.div>
 
       {/* Image animation */}

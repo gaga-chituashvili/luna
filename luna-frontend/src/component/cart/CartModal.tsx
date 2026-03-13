@@ -1,6 +1,7 @@
 import { useCartStore } from "../../store/cartStore";
 import { X, ChevronUp, ChevronDown } from "lucide-react";
 import axios from "axios";
+import { cartModalData } from "../../constants/cartModal.data";
 
 type Props = {
   open: boolean;
@@ -32,9 +33,15 @@ export const CartModal = ({ open, onClose }: Props) => {
       console.error("Checkout failed:", error);
     }
   };
+
   return (
-    <section className="fixed inset-0 z-50">
-      <div className="absolute right-6 top-20 w-[380px] bg-[#F5F2F0] rounded-3xl p-6 text-[#825444] shadow-xl">
+    <section className="fixed inset-0 z-50 flex items-center justify-center sm:block">
+      <div
+        className="absolute inset-0 bg-black/40 sm:hidden"
+        onClick={onClose}
+      />
+
+      <div className="relative w-[92%] max-w-[380px] sm:w-[380px] bg-[#F5F2F0] rounded-3xl p-6 text-[#825444] shadow-xl sm:absolute sm:right-6 sm:top-20">
         <button
           onClick={onClose}
           className="absolute right-4 top-4 border border-[#825444] rounded-full p-2"
@@ -43,7 +50,7 @@ export const CartModal = ({ open, onClose }: Props) => {
         </button>
 
         <h2 className="text-xl font-semibold mb-6">
-          Cart <sup>{cart.length}</sup>
+          {cartModalData.title} <sup>{cart.length}</sup>
         </h2>
 
         <article className="space-y-5 max-h-[300px] overflow-y-auto">
@@ -82,20 +89,22 @@ export const CartModal = ({ open, onClose }: Props) => {
         </article>
 
         <div className="mt-4 flex justify-between font-semibold">
-          <span>Total</span>
+          <span>{cartModalData.total}</span>
           <span>GEL {total.toFixed(2)}</span>
         </div>
+
         <button
           onClick={checkout}
           className="mt-4 w-full bg-[#825444] text-white py-3 rounded-full text-sm"
         >
-          Check out
+          {cartModalData.checkout}
         </button>
+
         <button
           className="mt-4 w-full bg-[#825444] text-white py-3 rounded-full text-sm"
           onClick={clearCart}
         >
-          Clear Cart
+          {cartModalData.clearCart}
         </button>
       </div>
     </section>
