@@ -2,9 +2,12 @@ import { useState } from "react";
 import { FilterPanel } from "./FilterPanel";
 import { ShopPageCoffeeCard } from "./ShopPageCoffeeCard";
 import { useCoffees } from "../../api/api /hooks/useData";
+import { useSearch } from "@tanstack/react-router";
 
 export const CoffeeShop = () => {
-  const [search, setSearch] = useState("");
+  const { q } = useSearch({ from: "/shop" });
+
+  const [search, setSearch] = useState(q ?? "");
   const [price, setPrice] = useState<[number, number]>([0, 20]);
   const [tag, setTag] = useState("all");
 

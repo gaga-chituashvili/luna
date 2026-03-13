@@ -16,6 +16,8 @@ import {
 export const Header = () => {
   const cart = useCartStore((state) => state.cart);
   const [openCart, setOpenCart] = useState(false);
+  const [openSearch, setOpenSearch] = useState(false);
+  const [query, setQuery] = useState("");
 
   const navigate = useNavigate();
   const visible = useScrollDirection();
@@ -58,7 +60,46 @@ export const Header = () => {
         </nav>
 
         <div className="flex items-center gap-5">
-          <Search className="w-5 h-5 cursor-pointer hover:opacity-70" />
+          <div className="relative flex items-center">
+            {!openSearch && (
+              <Search
+                className="w-5 h-5 cursor-pointer hover:opacity-70"
+                onClick={() => setOpenSearch(true)}
+              />
+            )}
+
+            {openSearch && (
+              <input
+                autoFocus
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    navigate({
+                      to: ROUTES.shop,
+                      search: { q: query },
+                    });
+                    setOpenSearch(false);
+                  }
+                }}
+                placeholder="Search coffee..."
+                className="
+      w-44
+      bg-transparent
+      text-sm
+      text-white
+      placeholder:text-gray-400
+      border-b border-[#825444]/60
+      focus:border-[#c48a6a]
+      transition-colors duration-200
+      outline-none
+      px-2 py-1
+      ml-1
+    "
+              />
+            )}
+          </div>
           <User className="w-5 h-5 cursor-pointer hover:opacity-70" />
 
           {/* Cart */}
