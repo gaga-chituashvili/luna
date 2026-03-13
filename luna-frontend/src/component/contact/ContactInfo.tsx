@@ -8,12 +8,20 @@ import {
   Linkedin,
 } from "lucide-react";
 
-const Social = [
-  { icon: Youtube, link: "#" },
-  { icon: Instagram, link: "#" },
-  { icon: Facebook, link: "#" },
-  { icon: Linkedin, link: "#" },
-];
+import { contactInfoData, socialLinks } from "@/../src/constants/contactData";
+
+const iconMap = {
+  mail: Mail,
+  phone: Phone,
+  location: MapPin,
+};
+
+const socialIconMap = {
+  youtube: Youtube,
+  instagram: Instagram,
+  facebook: Facebook,
+  linkedin: Linkedin,
+};
 
 export function ContactInfo() {
   return (
@@ -23,32 +31,30 @@ export function ContactInfo() {
       </h2>
 
       <div className="space-y-3 text-base md:text-2xl">
-        <p className="flex items-center gap-3">
-          <Mail size={18} />
-          hello@luna.coffee
-        </p>
-
-        <p className="flex items-center gap-3">
-          <Phone size={18} />
-          +995 555 123 456
-        </p>
-
-        <p className="flex items-center gap-3">
-          <MapPin size={18} />
-          Tbilisi, Georgia
-        </p>
+        {contactInfoData.map((item, i) => {
+          const Icon = iconMap[item.icon];
+          return (
+            <p key={i} className="flex items-center gap-3">
+              <Icon size={18} />
+              {item.value}
+            </p>
+          );
+        })}
       </div>
 
       <div className="flex gap-3 md:gap-4 pt-2">
-        {Social.map(({ icon: Icon }, i) => (
-          <a
-            key={i}
-            href="#"
-            className="w-10 h-10 md:w-11 md:h-11 flex items-center justify-center rounded-full bg-[#7a4e3a] text-white cursor-pointer transition hover:scale-110 hover:bg-[#5d3828]"
-          >
-            <Icon size={18} />
-          </a>
-        ))}
+        {socialLinks.map((item, i) => {
+          const Icon = socialIconMap[item.icon];
+          return (
+            <a
+              key={i}
+              href={item.link}
+              className="w-10 h-10 md:w-11 md:h-11 flex items-center justify-center rounded-full bg-[#7a4e3a] text-white transition hover:scale-110 hover:bg-[#5d3828]"
+            >
+              <Icon size={18} />
+            </a>
+          );
+        })}
       </div>
     </section>
   );
