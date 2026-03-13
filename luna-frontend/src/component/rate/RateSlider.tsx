@@ -14,7 +14,6 @@ export const RateSlider = () => {
 
   return (
     <section className="w-full py-28 px-6 bg-black text-white text-center relative overflow-visible">
-      {/* Title animation */}
       <motion.h4
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -30,7 +29,6 @@ export const RateSlider = () => {
         across the city
       </motion.h4>
 
-      {/* Navigation arrows */}
       <div className="absolute left-6 top-1/2 -translate-y-1/2 z-10 hidden md:block cursor-pointer rate-prev">
         <ArrowBigLeft size={36} className="text-[#B8735A]" />
       </div>
@@ -39,7 +37,6 @@ export const RateSlider = () => {
         <ArrowBigRight size={36} className="text-[#B8735A]" />
       </div>
 
-      {/* Slider */}
       <Swiper
         modules={[Navigation, Pagination]}
         navigation={{

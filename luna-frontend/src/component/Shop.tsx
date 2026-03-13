@@ -36,7 +36,7 @@ export const Shop = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="flex gap-x-4 justify-center lg:justify-start"
         >
-          <Button variant="default">{HOME_HERO.buttons.shop}</Button>
+          <Button onClick={() => navigate({ to: ROUTES.shop })} variant="default">{HOME_HERO.buttons.shop}</Button>
 
           <Button
             onClick={() => navigate({ to: ROUTES.ourStory })}
