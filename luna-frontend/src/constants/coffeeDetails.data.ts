@@ -1,4 +1,6 @@
-export const coffeeDetailsData = {
+import type { CoffeeDetailsData } from "../api/type/CoffeeDetails.types";
+
+export const coffeeDetailsData: CoffeeDetailsData = {
   reviews: 15,
   stars: 5,
   description:
