@@ -4,8 +4,7 @@
 პროექტი აერთიანებს სუფთა frontend სტრუქტურას და მოქნილ backend API-ს, რაც საშუალებას იძლევა მარტივად გაფართოვდეს მომავალში.
 
 > ⚠️ **Project Status**  
-> პროექტი ამჟამად არის **აქტიური განვითარების პროცესში**. ფუნქციონალი ეტაპობრივად ემატება და არქიტექტურა მუდმივად იხვეწება.
-
+> This project is currently under active development. New features are being added gradually while the architecture continues to evolve and improve.
 ---
 
 ## 🚀 Tech Stack
