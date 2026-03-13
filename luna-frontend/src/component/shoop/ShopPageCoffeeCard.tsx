@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import type { Coffee } from "../../api/type/coffees";
+import type { Coffee } from "../../api/type/coffees.types";
 import { CoffeeCard } from "../coffees/CoffeeCard";
 
 type Props = {

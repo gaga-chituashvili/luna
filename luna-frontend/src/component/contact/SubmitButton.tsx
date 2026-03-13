@@ -1,4 +1,5 @@
 import { Button } from "@/component/ui/Button";
+
 interface SubmitButtonProps {
   isSubmitting: boolean;
 }
@@ -9,7 +10,21 @@ export function SubmitButton({ isSubmitting }: SubmitButtonProps) {
       variant="default"
       type="submit"
       disabled={isSubmitting}
-      className="px-12 py-3 rounded-full bg-[#7a4e3a] text-white hover:bg-[#8b5a45] active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-[#7a4e3a]"
+      className="
+        w-full md:w-auto
+        px-10 md:px-12
+        py-3
+        rounded-full
+        bg-[#7a4e3a]
+        text-white
+        flex items-center justify-center
+        hover:bg-[#8b5a45]
+        active:scale-95
+        transition-all
+        disabled:opacity-50
+        disabled:cursor-not-allowed
+        disabled:hover:bg-[#7a4e3a]
+      "
     >
       {isSubmitting ? (
         <span className="flex items-center gap-2">

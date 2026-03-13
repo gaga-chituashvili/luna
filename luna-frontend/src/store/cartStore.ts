@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import type { Coffee } from "../api/type/coffees";
+import type { Coffee } from "../api/type/coffees.types";
 
 type CartItem = Coffee & {
   quantity: number;

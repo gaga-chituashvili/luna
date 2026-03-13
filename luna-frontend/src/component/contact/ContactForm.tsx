@@ -21,12 +21,12 @@ export function ContactForm() {
       onSubmit={handleSubmit}
     >
       {({ isSubmitting, setFieldValue, values }) => (
-        <Form className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <Form className="space-y-5 md:space-y-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <FormField label="Full Name" required name="fullName">
               <Field
                 name="fullName"
-                className="mt-2 h-[48px] w-full rounded-full bg-[#e9e5e3] px-5 text-[#6f4a3a] outline-none border border-[#a16a54] focus:border-[#7a4e3a] transition-colors"
+                className="mt-2 h-[48px] w-full rounded-full bg-[#e9e5e3] px-4 md:px-5 text-[#6f4a3a] outline-none border border-[#a16a54] focus:border-[#7a4e3a] transition-colors"
                 placeholder="e.g giorgi giorgidze"
               />
             </FormField>
@@ -35,7 +35,7 @@ export function ContactForm() {
               <Field
                 name="email"
                 type="email"
-                className="mt-2 h-[48px] w-full rounded-full bg-[#e9e5e3] px-5 text-[#6f4a3a] outline-none border border-[#a16a54] focus:border-[#7a4e3a] transition-colors"
+                className="mt-2 h-[48px] w-full rounded-full bg-[#e9e5e3] px-4 md:px-5 text-[#6f4a3a] outline-none border border-[#a16a54] focus:border-[#7a4e3a] transition-colors"
                 placeholder="e.g g.giorgidze@gmail.com"
               />
             </FormField>
@@ -50,7 +50,7 @@ export function ContactForm() {
             <Field
               as="textarea"
               name="message"
-              className="mt-2 w-full min-h-[160px] rounded-3xl bg-[#e9e5e3] px-5 py-4 text-[#6f4a3a] outline-none border border-[#a16a54] resize-none focus:border-[#7a4e3a] transition-colors"
+              className="mt-2 w-full min-h-[140px] md:min-h-[160px] rounded-3xl bg-[#e9e5e3] px-4 md:px-5 py-4 text-[#6f4a3a] outline-none border border-[#a16a54] resize-none focus:border-[#7a4e3a] transition-colors"
               placeholder="Text message"
             />
           </FormField>
