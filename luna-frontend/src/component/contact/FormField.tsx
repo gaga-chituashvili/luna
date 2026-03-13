@@ -9,15 +9,21 @@ interface FormFieldProps {
 
 export function FormField({ label, required, children, name }: FormFieldProps) {
   return (
-    <div>
-      <label className="text-sm text-white/70">
-        {label} {required && "*"}
+    <div className="flex flex-col gap-1.5">
+      <label
+        htmlFor={name}
+        className="text-xs md:text-sm text-white/70 flex items-center gap-1"
+      >
+        {label}
+        {required && <span className="text-red-400">*</span>}
       </label>
+
       {children}
+
       <ErrorMessage
         name={name}
         component="p"
-        className="mt-1 text-sm text-red-400"
+        className="text-xs md:text-sm text-red-400"
       />
     </div>
   );
