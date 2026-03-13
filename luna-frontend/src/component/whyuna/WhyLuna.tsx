@@ -1,30 +1,4 @@
-import lunaframe1 from "../../assets/lunaframe1.png";
-import lunaframe2 from "../../assets/lunaframe2.png";
-import lunaframe3 from "../../assets/lunaframe3.png";
-
-type WhyLuna = {
-  img: string;
-  title: string;
-  text: string;
-};
-
-const CardData: WhyLuna[] = [
-  {
-    img: lunaframe1,
-    title: "Carefully Sourced Beans",
-    text: "Carefully selected blends, chosen by our customers for everyday moments of calm.",
-  },
-  {
-    img: lunaframe2,
-    title: "Thoughtfully Roasted",
-    text: "Each batch is roasted with precision to highlight the natural character of the beans, never overpowering them.",
-  },
-  {
-    img: lunaframe3,
-    title: "Designed for Calm Moments",
-    text: "Luna is created for everyday rituals – coffee that supports focus, comfort, and quiet enjoyment.",
-  },
-];
+import { WHY_LUNA } from "../../constants/homeData";
 
 export const WhyLuna = () => {
   return (
@@ -39,7 +13,7 @@ export const WhyLuna = () => {
       </p>
 
       <div className="w-full max-w-4xl md:max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-10">
-        {CardData.map((card, i) => (
+        {WHY_LUNA.map((card, i) => (
           <article
             key={i}
             className="relative w-full aspect-[4/5] max-h-[28rem] md:max-h-none rounded-3xl overflow-hidden

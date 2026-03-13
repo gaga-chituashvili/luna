@@ -2,6 +2,7 @@ import { Button } from "../ui/Button";
 import { useNavigate } from "@tanstack/react-router";
 import { ROUTES } from "../../routes/paths";
 import { MoveRight } from "lucide-react";
+import { RITUAL } from "../../constants/homeData";
 
 export const Ritual = () => {
   const navigate = useNavigate();
@@ -24,8 +25,8 @@ export const Ritual = () => {
         leading-snug
       "
       >
-        Start your daily coffee ritual <br />
-        <span className="text-[#a36a4f]">with Luna.</span>
+        {RITUAL.title1} <br />
+        <span className="text-[#a36a4f]">{RITUAL.title2}</span>
       </h4>
 
       <p
@@ -36,12 +37,11 @@ export const Ritual = () => {
         text-gray-300
       "
       >
-        Thoughtfully crafted blends designed to bring calm, balance, and clarity
-        to your everyday moments.
+        {RITUAL.description}
       </p>
 
       <Button onClick={() => navigate({ to: ROUTES.shop })} variant="default">
-        Shop Coffee <MoveRight />
+        {RITUAL.buttonText} <MoveRight />
       </Button>
     </section>
   );

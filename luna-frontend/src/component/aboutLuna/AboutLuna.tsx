@@ -1,5 +1,5 @@
 import { Button } from "../ui/Button";
-import homecover from "../../assets/homecover.png";
+import { ABOUT_LUNA } from "../../constants/homeData";
 
 export const AboutLuna = () => {
   return (
@@ -20,7 +20,8 @@ export const AboutLuna = () => {
           font-medium
         "
       >
-        About <span className="text-[#a36a4f]">Luna</span>
+        {ABOUT_LUNA.title}{" "}
+        <span className="text-[#a36a4f]">{ABOUT_LUNA.highlight}</span>
       </h4>
 
       <p
@@ -31,12 +32,10 @@ export const AboutLuna = () => {
           text-gray-300
         "
       >
-        Luna was created for people who see coffee as a{" "}
-        <br className="hidden sm:block" />
-        moment of pause, not rush.
+        {ABOUT_LUNA.description}
       </p>
 
-      <Button variant="default">Discover Our Story</Button>
+      <Button variant="default">{ABOUT_LUNA.buttonText}</Button>
 
       <div
         className="
@@ -49,13 +48,9 @@ export const AboutLuna = () => {
         "
       >
         <img
-          src={homecover}
-          alt="Home Cover"
-          className="
-            w-full
-            h-auto
-            object-cover
-          "
+          src={ABOUT_LUNA.image}
+          alt={ABOUT_LUNA.imageAlt}
+          className="w-full h-auto object-cover"
         />
       </div>
     </section>
