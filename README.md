@@ -154,6 +154,63 @@
     └── 1771266097708.png
 ```
 
+## Tech Stack
+
+### Frontend
+
+- React  
+- React DOM  
+- Vite  
+- TypeScript  
+- TailwindCSS  
+- Axios  
+- Zustand  
+- TanStack React Query  
+- TanStack React Router  
+- Framer Motion  
+- Lucide React  
+- Swiper  
+- React Hook Form  
+- Formik  
+- Yup  
+- Zod  
+- Zod Formik Adapter  
+- React Spinners  
+- React CountUp  
+- React Circular Progressbar  
+- React Intersection Observer  
+- React Phone Number Input  
+- React Scroll  
+- Radix UI  
+- Class Variance Authority  
+- CLSX  
+- Tailwind Merge  
+- Tw Animate CSS  
+- EmailJS  
+- rc-slider  
+- Sonner  
+
+### Backend
+
+- Node.js  
+- Express.js  
+- Sequelize  
+- PostgreSQL (pg)  
+- bcryptjs  
+- JSON Web Token (JWT)  
+- Multer  
+- Cloudinary  
+- Multer Storage Cloudinary  
+- CORS  
+- dotenv  
+- Zod  
+- Swagger UI Express  
+- Swagger JSDoc  
+- Zod to OpenAPI  
+
+ 
+
+
 ## ✨ Key Features (Current & Planned)
 
 - Modern UI & reusable React components
