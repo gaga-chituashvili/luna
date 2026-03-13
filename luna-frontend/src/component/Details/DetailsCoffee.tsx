@@ -3,6 +3,8 @@ import { useCoffees } from "../../api/api /hooks/useData";
 import { useCartStore } from "../../store/cartStore";
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import { ROUTES } from "../../routes/paths";
+import { coffeeDetailsData } from "../../constants/coffeeDetails.data";
+
 export const DetailsCoffee = () => {
   const { coffeeId } = useParams({ from: "/shop/$coffeeId" });
   const { data: coffees, isLoading } = useCoffees();
@@ -44,7 +46,7 @@ export const DetailsCoffee = () => {
   const totalPrice = (coffee.price * Math.max(quantity, 1)).toFixed(2);
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#1a1410] to-[#0a0a0a]  flex items-center justify-center p-4 md:p-8">
+    <section className="min-h-screen  bg-gradient-to-br from-[#0a0a0a] via-[#1a1410] to-[#0a0a0a]  flex items-center justify-center p-4 md:p-8 py-24">
       <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
         <div className="flex items-center justify-center">
           <div className="bg-gradient-to-br  rounded-[2.5rem]  w-full max-w-[37.5rem] aspect-square flex items-center justify-center shadow-2xl">
@@ -62,7 +64,7 @@ export const DetailsCoffee = () => {
           </h1>
 
           <div className="flex items-center gap-2">
-            {[...Array(5)].map((_, i) => (
+            {[...Array(coffeeDetailsData.stars)].map((_, i) => (
               <svg
                 key={i}
                 className="w-7 h-7 fill-[#d4af37]"
@@ -71,12 +73,13 @@ export const DetailsCoffee = () => {
                 <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
               </svg>
             ))}
-            <span className="text-gray-400 ml-2 text-lg">15 review</span>
+            <span className="text-gray-400 ml-2 text-lg">
+              {coffeeDetailsData.reviews} review
+            </span>
           </div>
 
           <p className="text-gray-300 text-lg leading-relaxed">
-            A smooth and balanced blend with soft chocolate notes, crafted for
-            calm evening moments.
+            {coffeeDetailsData.description}
           </p>
 
           <div className="text-2xl">
@@ -87,20 +90,19 @@ export const DetailsCoffee = () => {
           </div>
 
           <div className="flex flex-wrap gap-3">
-            <span className="px-6 py-2.5 border-2 border-[#6b4423] rounded-full text-base text-gray-300 font-medium">
-              Medium Roast
-            </span>
-            <span className="px-6 py-2.5 border-2 border-[#6b4423] rounded-full text-base text-gray-300 font-medium">
-              Chocolate & Nuts
-            </span>
-            <span className="px-6 py-2.5 border-2 border-[#6b4423] rounded-full text-base text-gray-300 font-medium">
-              Balanced Body
-            </span>
+            {coffeeDetailsData.tags.map((tag) => (
+              <span
+                key={tag}
+                className="px-6 py-2.5 border-2 border-[#6b4423] rounded-full text-base text-gray-300 font-medium"
+              >
+                {tag}
+              </span>
+            ))}
           </div>
 
           <div>
             <span className="px-7 py-2.5 border-2 border-[#6b4423] rounded-full text-base text-gray-300 font-medium inline-block">
-              250g
+              {coffeeDetailsData.weight}
             </span>
           </div>
 
