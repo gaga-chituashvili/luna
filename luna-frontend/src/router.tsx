@@ -10,6 +10,7 @@ import Contact from "./pages/Contact";
 import MainLayout from "./layout/MainLayout";
 import { ROUTES } from "./routes/paths";
 import { DetailsCoffee } from "./component/Details/DetailsCoffee";
+import { Log } from "./pages/Log";
 
 const rootRoute = createRootRoute({
   component: MainLayout,
@@ -44,12 +45,19 @@ const detailsCoffeeRoute = createRoute({
   component: DetailsCoffee,
 });
 
+const logRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: ROUTES.log,
+  component: Log,
+});
+
 const routeTree = rootRoute.addChildren([
   homeRoute,
   shopRoute,
   ourStoryRoute,
   contactRoute,
   detailsCoffeeRoute,
+  logRoute
 ]);
 
 export const router = createRouter({

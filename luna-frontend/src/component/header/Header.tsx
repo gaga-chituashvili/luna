@@ -100,7 +100,10 @@ export const Header = () => {
               />
             )}
           </div>
-          <User className="w-5 h-5 cursor-pointer hover:opacity-70" />
+          <User
+            onClick={() => navigate({ to: ROUTES.log })}
+            className="w-5 h-5 cursor-pointer hover:opacity-70"
+          />
 
           {/* Cart */}
           <div className="relative">
