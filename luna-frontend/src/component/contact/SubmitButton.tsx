@@ -1,10 +1,12 @@
+import { Button } from "@/component/ui/Button";
 interface SubmitButtonProps {
   isSubmitting: boolean;
 }
 
 export function SubmitButton({ isSubmitting }: SubmitButtonProps) {
   return (
-    <button
+    <Button
+      variant="default"
       type="submit"
       disabled={isSubmitting}
       className="px-12 py-3 rounded-full bg-[#7a4e3a] text-white hover:bg-[#8b5a45] active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-[#7a4e3a]"
@@ -32,6 +34,6 @@ export function SubmitButton({ isSubmitting }: SubmitButtonProps) {
       ) : (
         "Send Message"
       )}
-    </button>
+    </Button>
   );
 }

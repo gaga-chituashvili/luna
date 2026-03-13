@@ -32,7 +32,7 @@ export const RegistrationComingSoon = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
       >
-        <Button onClick={() => navigate({ to: ROUTES.home })}>
+        <Button variant="default" onClick={() => navigate({ to: ROUTES.home })}>
           Back to Home
         </Button>
       </motion.div>
