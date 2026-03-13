@@ -14,7 +14,7 @@ export const Hero = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-block px-6 py-2 mb-6 text-sm font-medium bg-[#8b6947]/20 text-[#d4af37] rounded-full border border-[#8b6947]/30"
+          className="inline-block px-6 py-2 mb-6 text-sm font-medium bg-[#8b6947]/20 text-white rounded-full border border-[#8b6947]/30"
         >
           {HERO_DATA.subtitle}
         </motion.span>
@@ -23,7 +23,7 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#d4af37] via-[#f4d03f] to-[#d4af37] bg-clip-text text-transparent"
+          className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r text-[#B8735A] via-white  bg-clip-text text-transparent"
         >
           {HERO_DATA.title}
         </motion.h1>
@@ -47,7 +47,7 @@ export const Hero = () => {
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
           >
-            <ChevronDown className="w-8 h-8 mx-auto text-[#d4af37]" />
+            <ChevronDown className="w-8 h-8 mx-auto text-[#B8735A] via-white " />
           </motion.div>
         </motion.div>
       </div>

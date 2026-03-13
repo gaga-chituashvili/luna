@@ -28,7 +28,7 @@ export const Values = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-bold text-center mb-16 text-[#d4af37]"
+          className="text-4xl md:text-5xl font-bold text-center mb-16 text-[#B8735A] via-white "
         >
           Our Values
         </motion.h2>
@@ -46,7 +46,7 @@ export const Values = () => {
               variants={item}
               whileHover={{ scale: 1.05, y: -5 }}
               transition={{ duration: 0.3 }}
-              className="group relative bg-gradient-to-br from-[#2d1f1a] to-[#1a1410] rounded-2xl p-8 border border-[#8b6947]/20 hover:border-[#d4af37]/50 transition-all duration-300"
+              className="group relative bg-gradient-to-br from-[#2d1f1a] to-[#1a1410] rounded-2xl p-8 border border-[#8b6947]/20 hover:border-[#B8735A]/50 transition-all duration-300"
             >
               <motion.div
                 whileHover={{ rotate: 360 }}
@@ -56,7 +56,7 @@ export const Values = () => {
                 {value.icon}
               </motion.div>
 
-              <h3 className="text-2xl font-bold mb-4 text-[#f4d03f]">
+              <h3 className="text-2xl font-bold mb-4 text-[#B8735A] via-white ">
                 {value.title}
               </h3>
 
@@ -64,7 +64,7 @@ export const Values = () => {
                 {value.description}
               </p>
 
-              <div className="absolute inset-0 bg-gradient-to-br from-[#d4af37]/0 to-[#d4af37]/0 group-hover:from-[#d4af37]/5 group-hover:to-[#d4af37]/10 rounded-2xl transition-all duration-300 pointer-events-none"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-[#B8735A]/0 to-[#B8735A]/0 group-hover:from-[#B8735A]/5 group-hover:to-[#B8735A]/10 rounded-2xl transition-all duration-300 pointer-events-none"></div>
             </motion.div>
           ))}
         </motion.div>

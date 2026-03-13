@@ -20,7 +20,7 @@ export const Team = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-bold text-center mb-16 text-[#d4af37]"
+          className="text-4xl md:text-5xl font-bold text-center mb-16 text-[#B8735A] via-white"
         >
           Meet Our Team
         </motion.h2>
@@ -35,7 +35,7 @@ export const Team = () => {
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -10 }}
-                className="group relative bg-[#2d1f1a] rounded-2xl overflow-hidden border border-[#8b6947]/20 hover:border-[#d4af37]/40 transition-all duration-300"
+                className="group relative bg-[#2d1f1a] rounded-2xl overflow-hidden border border-[#8b6947]/20 hover:border-[#B8735A]/40 transition-all duration-300"
               >
                 <div className="aspect-square bg-gradient-to-br from-[#8b6947] to-[#6b4423] relative overflow-hidden">
                   {member.image ? (
@@ -72,10 +72,10 @@ export const Team = () => {
                 </div>
 
                 <div className="p-6">
-                  <h3 className="text-2xl font-bold mb-2 text-[#f4d03f]">
+                  <h3 className="text-2xl font-bold mb-2 text-[#B8735A] via-white ">
                     {member.name}
                   </h3>
-                  <p className="text-[#d4af37] mb-4 font-medium">
+                  <p className="text-[#B8735A] via-white mb-4 font-medium">
                     {member.role}
                   </p>
                   <p className="text-gray-300 leading-relaxed">{member.bio}</p>

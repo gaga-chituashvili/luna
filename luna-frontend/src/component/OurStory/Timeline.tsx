@@ -15,13 +15,13 @@ export const Timeline = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-bold text-center mb-16 text-[#d4af37]"
+          className="text-4xl md:text-5xl font-bold text-center mb-16 text-[#B8735A] via-white "
         >
           Our Journey
         </motion.h2>
 
         <div className="relative">
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-[#d4af37] to-transparent hidden md:block"></div>
+          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gradient-to-b text-[#B8735A] via-white  to-transparent hidden md:block"></div>
 
           <div className="space-y-16">
             {TIMELINE.map((event, index) => {
@@ -55,12 +55,12 @@ export const Timeline = () => {
                     <motion.div
                       whileHover={{ scale: 1.05 }}
                       transition={{ duration: 0.3 }}
-                      className="bg-[#2d1f1a] rounded-2xl p-8 border border-[#8b6947]/20 hover:border-[#8b6947]/40 transition-all"
+                      className="bg-[#2d1f1a] rounded-2xl p-8 border border-[#8b6947]/20 hover:border-[#B8735A]/40 transition-all"
                     >
-                      <span className="inline-block px-4 py-1 mb-4 text-sm font-semibold bg-[#d4af37]/20 text-[#d4af37] rounded-full md:hidden">
+                      <span className="inline-block px-4 py-1 mb-4 text-sm font-semibold bg-[#B8735A]/20 text-[#B8735A] via-white  rounded-full md:hidden">
                         {event.year}
                       </span>
-                      <h3 className="text-2xl font-bold mb-3 text-[#f4d03f]">
+                      <h3 className="text-2xl font-bold mb-3 text-[#B8735A] via-white ">
                         {event.title}
                       </h3>
                       <p className="text-gray-300 leading-relaxed">
