@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import { ArrowBigLeft, ArrowBigRight, Star } from "lucide-react";
@@ -5,21 +6,31 @@ import { ArrowBigLeft, ArrowBigRight, Star } from "lucide-react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+
 import { useRates } from "../../api/api /hooks/useData";
 
 export const RateSlider = () => {
   const { data: reviews = [] } = useRates();
+
   return (
     <section className="w-full py-28 px-6 bg-black text-white text-center relative overflow-visible">
-      <h4 className="text-3xl md:text-4xl font-light mb-16">
+      {/* Title animation */}
+      <motion.h4
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="text-3xl md:text-4xl font-light mb-16"
+      >
         Trusted by{" "}
         <span className="text-[#B8735A]">
           coffee <br />
           lovers
         </span>{" "}
         across the city
-      </h4>
+      </motion.h4>
 
+      {/* Navigation arrows */}
       <div className="absolute left-6 top-1/2 -translate-y-1/2 z-10 hidden md:block cursor-pointer rate-prev">
         <ArrowBigLeft size={36} className="text-[#B8735A]" />
       </div>
@@ -28,6 +39,7 @@ export const RateSlider = () => {
         <ArrowBigRight size={36} className="text-[#B8735A]" />
       </div>
 
+      {/* Slider */}
       <Swiper
         modules={[Navigation, Pagination]}
         navigation={{
@@ -61,7 +73,12 @@ export const RateSlider = () => {
               [&.swiper-slide-active]:shadow-2xl
             "
           >
-            <article
+            <motion.article
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -6 }}
               className="
                 bg-[#e7e4e2]
                 text-black
@@ -86,7 +103,7 @@ export const RateSlider = () => {
               <p className="text-sm leading-relaxed text-gray-800">
                 {review.comment}
               </p>
-            </article>
+            </motion.article>
           </SwiperSlide>
         ))}
       </Swiper>

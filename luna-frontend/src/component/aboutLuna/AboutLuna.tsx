@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Button } from "../ui/Button";
 import { ABOUT_LUNA } from "../../constants/homeData";
 
@@ -13,7 +14,12 @@ export const AboutLuna = () => {
         bg-gradient-to-br from-black via-[#1a0f0a] to-[#2b1a12]
       "
     >
-      <h4
+      {/* Title animation */}
+      <motion.h4
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
         className="
           text-center
           text-2xl sm:text-3xl lg:text-4xl
@@ -22,9 +28,14 @@ export const AboutLuna = () => {
       >
         {ABOUT_LUNA.title}{" "}
         <span className="text-[#a36a4f]">{ABOUT_LUNA.highlight}</span>
-      </h4>
+      </motion.h4>
 
-      <p
+      {/* Description animation */}
+      <motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.7, delay: 0.2 }}
+        viewport={{ once: true }}
         className="
           text-center
           max-w-xl
@@ -33,11 +44,24 @@ export const AboutLuna = () => {
         "
       >
         {ABOUT_LUNA.description}
-      </p>
+      </motion.p>
 
-      <Button variant="default">{ABOUT_LUNA.buttonText}</Button>
+      {/* Button animation */}
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        viewport={{ once: true }}
+      >
+        <Button variant="default">{ABOUT_LUNA.buttonText}</Button>
+      </motion.div>
 
-      <div
+      {/* Image animation */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, delay: 0.4 }}
+        viewport={{ once: true }}
         className="
           mt-16
           w-full
@@ -47,12 +71,14 @@ export const AboutLuna = () => {
           shadow-2xl
         "
       >
-        <img
+        <motion.img
           src={ABOUT_LUNA.image}
           alt={ABOUT_LUNA.imageAlt}
           className="w-full h-auto object-cover"
+          whileHover={{ scale: 1.03 }}
+          transition={{ duration: 0.4 }}
         />
-      </div>
+      </motion.div>
     </section>
   );
 };

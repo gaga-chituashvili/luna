@@ -1,29 +1,54 @@
+import { motion } from "framer-motion";
 import { WHY_LUNA } from "../../constants/homeData";
 
 export const WhyLuna = () => {
   return (
     <section className="w-full bg-black py-24 px-6 flex flex-col items-center text-center">
-      <h4 className="text-3xl md:text-4xl font-light text-white mb-4">
+      <motion.h4
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="text-3xl md:text-4xl font-light text-white mb-4"
+      >
         Why <span className="text-[#B8735A]">Luna?</span>
-      </h4>
+      </motion.h4>
 
-      <p className="text-gray-400 max-w-2xl mb-16">
+      <motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        viewport={{ once: true }}
+        className="text-gray-400 max-w-2xl mb-16"
+      >
         Carefully selected blends, chosen by our customers for everyday moments
         of calm.
-      </p>
+      </motion.p>
 
       <div className="w-full max-w-4xl md:max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-10">
         {WHY_LUNA.map((card, i) => (
-          <article
+          <motion.article
             key={i}
+            initial={{ opacity: 0, y: 40, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{
+              duration: 0.6,
+              delay: i * 0.2,
+              type: "spring",
+              stiffness: 80,
+            }}
+            viewport={{ once: true }}
+            whileHover={{ y: -10, scale: 1.03 }}
             className="relative w-full aspect-[4/5] max-h-[28rem] md:max-h-none rounded-3xl overflow-hidden
             bg-gradient-to-b from-[#1a1a1a] to-black
             shadow-[0_0_3rem_rgba(184,115,90,0.15)]"
           >
-            <img
+            <motion.img
               src={card.img}
               alt={card.title}
               className="absolute inset-0 w-full h-full object-cover opacity-90"
+              whileHover={{ scale: 1.08 }}
+              transition={{ duration: 0.4 }}
             />
 
             <div
@@ -38,7 +63,7 @@ export const WhyLuna = () => {
                 {card.text}
               </p>
             </div>
-          </article>
+          </motion.article>
         ))}
       </div>
     </section>
