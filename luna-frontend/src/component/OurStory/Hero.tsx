@@ -1,4 +1,6 @@
+import { motion } from "framer-motion";
 import { HERO_DATA } from "../../constants/ourStoryData";
+import { ChevronDown } from "lucide-react";
 
 export const Hero = () => {
   return (
@@ -8,31 +10,46 @@ export const Hero = () => {
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-        <span className="inline-block px-6 py-2 mb-6 text-sm font-medium bg-[#8b6947]/20 text-[#d4af37] rounded-full border border-[#8b6947]/30">
+        <motion.span
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="inline-block px-6 py-2 mb-6 text-sm font-medium bg-[#8b6947]/20 text-[#d4af37] rounded-full border border-[#8b6947]/30"
+        >
           {HERO_DATA.subtitle}
-        </span>
+        </motion.span>
 
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#d4af37] via-[#f4d03f] to-[#d4af37] bg-clip-text text-transparent">
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#d4af37] via-[#f4d03f] to-[#d4af37] bg-clip-text text-transparent"
+        >
           {HERO_DATA.title}
-        </h1>
+        </motion.h1>
 
-        <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto"
+        >
           {HERO_DATA.description}
-        </p>
+        </motion.p>
 
-        <div className="mt-12 animate-bounce">
-          <svg
-            className="w-6 h-6 mx-auto text-[#d4af37]"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.8 }}
+          className="mt-12"
+        >
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
           >
-            <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-          </svg>
-        </div>
+            <ChevronDown className="w-8 h-8 mx-auto text-[#d4af37]" />
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
