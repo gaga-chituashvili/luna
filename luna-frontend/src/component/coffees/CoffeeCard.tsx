@@ -1,8 +1,8 @@
-import { useCartStore } from "../../store/cartStore";
-import type { Coffee } from "../../api/type/coffees.types";
-import { Button } from "../ui/Button";
+import { useCartStore } from "@/store/cartStore";
+import type { Coffee } from "@/api/type/coffees.types";
+import { Button } from "@/component/ui/Button";
 import { Link } from "@tanstack/react-router";
-import { ROUTES } from "../../routes/paths";
+import { ROUTES } from "@/routes/paths";
 
 type Props = {
   coffee: Coffee;

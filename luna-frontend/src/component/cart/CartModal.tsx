@@ -1,7 +1,7 @@
-import { useCartStore } from "../../store/cartStore";
+import { useCartStore } from "@/store/cartStore";
 import { X, ChevronUp, ChevronDown } from "lucide-react";
 import axios from "axios";
-import { cartModalData } from "../../constants/cartModal.data";
+import { cartModalData } from "@/constants/cartModal.data";
 
 type Props = {
   open: boolean;

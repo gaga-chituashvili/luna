@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { VALUES } from "../../constants/ourStoryData";
+import { VALUES } from "@/constants/ourStoryData";
 
 const container = {
   hidden: { opacity: 0 },

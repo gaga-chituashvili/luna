@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import { Button } from "../component/ui/Button";
+import { Button } from "@/component/ui/Button";
 import { useNavigate } from "@tanstack/react-router";
-import { ROUTES } from "../routes/paths";
+import { ROUTES } from "@/routes/paths";
 
 export const RegistrationComingSoon = () => {
   const navigate = useNavigate();

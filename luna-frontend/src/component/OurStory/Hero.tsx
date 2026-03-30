@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { HERO_DATA } from "../../constants/ourStoryData";
+import { HERO_DATA } from "@/constants/ourStoryData";
 import { ChevronDown } from "lucide-react";
 
 export const Hero = () => {

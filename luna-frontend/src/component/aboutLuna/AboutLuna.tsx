@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { Button } from "../ui/Button";
-import { ABOUT_LUNA } from "../../constants/homeData";
+import { Button } from "@/component/ui/Button";
+import { ABOUT_LUNA } from "@/constants/homeData";
 import { useNavigate } from "@tanstack/react-router";
 import { ROUTES } from "@/routes/paths";
 

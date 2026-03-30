@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { FilterPanel } from "./FilterPanel";
-import { ShopPageCoffeeCard } from "./ShopPageCoffeeCard";
-import { useCoffees } from "../../api/api /hooks/useData";
+import { FilterPanel } from "@/component/shoop/FilterPanel";
+import { ShopPageCoffeeCard } from "@/component/shoop/ShopPageCoffeeCard";
+import { useCoffees } from "@/api/api /hooks/useData";
 import { useSearch } from "@tanstack/react-router";
 
 export const CoffeeShop = () => {

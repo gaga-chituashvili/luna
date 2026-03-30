@@ -3,12 +3,12 @@ import type {
   WhyLunaCard,
   AboutLunaData,
   RitualData,
-} from "../api/type/homeData.types";
-import coffee from "../assets/coffee.png";
-import lunaframe1 from "../assets/lunaframe1.png";
-import lunaframe2 from "../assets/lunaframe2.png";
-import lunaframe3 from "../assets/lunaframe3.png";
-import homecover from "../assets/homecover.png";
+} from "@/api/type/homeData.types";
+import coffee from "@/assets/coffee.png";
+import lunaframe1 from "@/assets/lunaframe1.png";
+import lunaframe2 from "@/assets/lunaframe2.png";
+import lunaframe3 from "@/assets/lunaframe3.png";
+import homecover from "@/assets/homecover.png";
 
 export const HOME_HERO: HomeHeroData = {
   title: "Specialty coffee",

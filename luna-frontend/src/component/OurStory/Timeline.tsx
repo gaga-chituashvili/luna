@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { TIMELINE } from "../../constants/ourStoryData";
+import { TIMELINE } from "@/constants/ourStoryData";
 
 export const Timeline = () => {
   const [ref, inView] = useInView({

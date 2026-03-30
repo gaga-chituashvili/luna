@@ -1,5 +1,5 @@
-import type { Coffee } from "../type/coffees.types";
-import type { Rate } from "../type/rate";
+import type { Coffee } from "@/api/type/coffees.types";
+import type { Rate } from "@/api/type/rate.type";
 
 const API_URL = "https://luna-fya4.onrender.com";
 

@@ -1,4 +1,4 @@
-import { RegistrationComingSoon } from "../component/RegistrationComingSoon";
+import { RegistrationComingSoon } from "@/component/RegistrationComingSoon";
 
 export const Log = () => {
   return (

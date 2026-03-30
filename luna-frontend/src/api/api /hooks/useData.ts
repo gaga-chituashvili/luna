@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { CoffeesApi, RateApi } from "../data";
+import { CoffeesApi, RateApi } from "@/api/api /data";
 
 type CoffeeFilters = {
   search?: string;

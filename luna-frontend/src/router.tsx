@@ -3,14 +3,14 @@ import {
   createRoute,
   createRootRoute,
 } from "@tanstack/react-router";
-import { Home } from "./pages/Home";
-import { Shop } from "./pages/Shop";
-import { OurStory } from "./pages/OurStory";
-import Contact from "./pages/Contact";
-import MainLayout from "./layout/MainLayout";
-import { ROUTES } from "./routes/paths";
-import { DetailsCoffee } from "./component/Details/DetailsCoffee";
-import { Log } from "./pages/Log";
+import { Home } from "@/pages/Home";
+import { Shop } from "@/pages/Shop";
+import { OurStory } from "@/pages/OurStory";
+import Contact from "@/pages/Contact";
+import MainLayout from "@/layout/MainLayout";
+import { ROUTES } from "@/routes/paths";
+import { DetailsCoffee } from "@/component/Details/DetailsCoffee";
+import { Log } from "@/pages/Log";
 
 const rootRoute = createRootRoute({
   component: MainLayout,

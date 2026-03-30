@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { WHY_LUNA } from "../../constants/homeData";
+import { WHY_LUNA } from "@/constants/homeData";
 
 export const WhyLuna = () => {
   return (

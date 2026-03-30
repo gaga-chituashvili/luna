@@ -1,10 +1,10 @@
 import { Formik, Form, Field } from "formik";
 import { toFormikValidationSchema } from "zod-formik-adapter";
-import { contactSchema } from "../../component/schemas/contactSchema";
-import { useContactForm } from "../../api/api /hooks/useContactForm";
-import { FormField } from "./FormField";
-import { PhoneField } from "./PhoneField";
-import { SubmitButton } from "./SubmitButton";
+import { contactSchema } from "@/component/schemas/contactSchema";
+import { useContactForm } from "@/api/api /hooks/useContactForm";
+import { FormField } from "@/component/contact/FormField";
+import { PhoneField } from "@/component/contact/PhoneField";
+import { SubmitButton } from "@/component/contact/SubmitButton";
 
 export function ContactForm() {
   const { handleSubmit } = useContactForm();

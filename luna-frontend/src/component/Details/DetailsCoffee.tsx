@@ -1,9 +1,9 @@
 import { useParams, Link } from "@tanstack/react-router";
-import { useCoffees } from "../../api/api /hooks/useData";
-import { useCartStore } from "../../store/cartStore";
+import { useCoffees } from "@/api/api /hooks/useData";
+import { useCartStore } from "@/store/cartStore";
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
-import { ROUTES } from "../../routes/paths";
-import { coffeeDetailsData } from "../../constants/coffeeDetails.data";
+import { ROUTES } from "@/routes/paths";
+import { coffeeDetailsData } from "@/constants/coffeeDetails.data";
 
 export const DetailsCoffee = () => {
   const { coffeeId } = useParams({ from: "/shop/$coffeeId" });
