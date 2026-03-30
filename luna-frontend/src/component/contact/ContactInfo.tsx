@@ -8,7 +8,7 @@ import {
   Linkedin,
 } from "lucide-react";
 
-import { contactInfoData, socialLinks } from "@/../src/constants/contactData";
+import { contactInfoData, socialLinks } from "@/constants/contactData";
 
 const iconMap = {
   mail: Mail,

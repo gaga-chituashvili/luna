@@ -1,6 +1,6 @@
-import lunalogo from "../../assets/Logo2.png";
+import lunalogo from "@/assets/Logo2.png";
 import { Link } from "@tanstack/react-router";
-import { ROUTES } from "../../routes/paths";
+import { ROUTES } from "@/routes/paths";
 import {
   Youtube,
   Instagram,

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import { ContactForm } from "../component/contact/ContactForm";
-import { ContactInfo } from "../component/contact/ContactInfo";
-import LocationSection from "../component/contact/LocationSection";
+import { ContactForm } from "@/component/contact/ContactForm";
+import { ContactInfo } from "@/component/contact/ContactInfo";
+import LocationSection from "@/component/contact/LocationSection";
 
 export default function Contact() {
   return (

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { User } from "lucide-react";
-import { TEAM } from "../../constants/ourStoryData";
+import { TEAM } from "@/constants/ourStoryData";
 import { useState } from "react";
 
 export const Team = () => {

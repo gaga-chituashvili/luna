@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Search, User, ShoppingCart, Menu } from "lucide-react";
-import logo from "../../assets/Logo2.png";
-import { ROUTES } from "../../routes/paths";
-import NavItem from "./NavItem";
-import { CartModal } from "../cart/CartModal";
-import { useCartStore } from "../../store/cartStore";
+import logo from "@/assets/Logo2.png";
+import { ROUTES } from "@/routes/paths";
+import NavItem from "@/component/header/NavItem";
+import { CartModal } from "@/component/cart/CartModal";
+import { useCartStore } from "@/store/cartStore";
 import { useRouterState, useNavigate } from "@tanstack/react-router";
-import { useScrollDirection } from "../../api/api /hooks/useScrollDirection";
+import { useScrollDirection } from "@/api/api /hooks/useScrollDirection";
 import {
   Popover,
   PopoverContent,

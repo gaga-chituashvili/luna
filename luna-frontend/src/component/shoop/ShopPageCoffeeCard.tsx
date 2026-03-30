@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import type { Coffee } from "../../api/type/coffees.types";
-import { CoffeeCard } from "../coffees/CoffeeCard";
+import type { Coffee } from "@/api/type/coffees.types";
+import { CoffeeCard } from "@/component/coffees/CoffeeCard";
 
 type Props = {
   allCoffees: Coffee[];

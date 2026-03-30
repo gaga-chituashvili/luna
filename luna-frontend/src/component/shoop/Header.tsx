@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import shopheader from "../../assets/shopheader.png";
+import shopheader from "@/assets/shopheader.png";
 
 export const Header = () => {
   return (

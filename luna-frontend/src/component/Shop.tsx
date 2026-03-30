@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
-import { Button } from "../component/ui/Button";
+import { Button } from "@/component/ui/Button";
 import { useNavigate } from "@tanstack/react-router";
-import { ROUTES } from "../routes/paths";
-import { HOME_HERO } from "../constants/homeData";
+import { ROUTES } from "@/routes/paths";
+import { HOME_HERO } from "@/constants/homeData";
 
 export const Shop = () => {
   const navigate = useNavigate();

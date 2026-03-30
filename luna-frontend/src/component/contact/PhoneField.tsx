@@ -1,6 +1,6 @@
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import { FormField } from "./FormField";
+import { FormField } from "@/component/contact/FormField";
 
 interface PhoneFieldProps {
   value: string;

@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import CountUp from "react-countup";
 import { Check, Coffee } from "lucide-react";
-import { MISSION } from "../../constants/ourStoryData";
+import { MISSION } from "@/constants/ourStoryData";
 
 export const Mission = () => {
   const [ref, inView] = useInView({ threshold: 0.3, triggerOnce: true });

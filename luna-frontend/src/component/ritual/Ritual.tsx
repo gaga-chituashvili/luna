@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
-import { Button } from "../ui/Button";
+import { Button } from "@/component/ui/Button";
 import { useNavigate } from "@tanstack/react-router";
-import { ROUTES } from "../../routes/paths";
+import { ROUTES } from "@/routes/paths";
 import { MoveRight } from "lucide-react";
-import { RITUAL } from "../../constants/homeData";
+import { RITUAL } from "@/constants/homeData";
 
 export const Ritual = () => {
   const navigate = useNavigate();

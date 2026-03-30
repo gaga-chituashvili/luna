@@ -7,7 +7,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-import { useRates } from "../../api/api /hooks/useData";
+import { useRates } from "@/api/api /hooks/useData";
 
 export const RateSlider = () => {
   const { data: reviews = [] } = useRates();
