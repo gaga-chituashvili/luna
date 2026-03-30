@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-const Order = require("@/models/order-schema");
-const OrderItem = require("@/models/order-item-schema");
+const Order = require("../models/order-schema");
+const OrderItem = require("../models/order-item-schema");
 
 router.post("/orders", async (req, res) => {
   try {

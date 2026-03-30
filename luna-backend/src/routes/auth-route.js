@@ -3,8 +3,8 @@ const {
   registerUser,
   signInUser,
   userProfile,
-} = require("@/services/auth.services");
-const { authMiddleware } = require("@/middlewares/auth.middlewares");
+} = require("../services/auth.services");
+const { authMiddleware } = require("../middlewares/auth.middlewares");
 
 const authRouter = express.Router();
 

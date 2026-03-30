@@ -1,4 +1,4 @@
-const { TodoSchema } = require('@/models/todo-schema');
+const { TodoSchema } = require('../models/todo-schema');
 
 async function resolveTaskId(req, res, next) {
   const taskId = parseInt(req.params.taskId, 10);

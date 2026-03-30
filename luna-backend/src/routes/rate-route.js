@@ -1,14 +1,14 @@
 const express = require("express");
 const router = express.Router();
 
-const { authMiddleware } = require("@/middlewares/auth.middlewares");
-const { isAdmin } = require("@/middlewares/isAdmin");
+const { authMiddleware } = require("../middlewares/auth.middlewares");
+const { isAdmin } = require("../middlewares/isAdmin");
 
 const {
   createRate,
   createRatesBulk,
   getAllRates,
-} = require("@/services/rate.service");
+} = require("../services/rate.service");
 
 router.post("/rates", authMiddleware, isAdmin, createRate);
 

@@ -1,8 +1,8 @@
 // const fs = require("fs");
 // const path = require("path");
 
-// const { sequelize } = require("@/src/utils/db");
-// const { CoffeeSchema } = require("@/src/models/coffee-schema");
+// const { sequelize } = require("./src/utils/db");
+// const { CoffeeSchema } = require("./src/models/coffee-schema");
 
 // async function seed() {
 //   try {
@@ -97,10 +97,10 @@
 
 //     await CoffeeSchema.bulkCreate(products);
 
-//     console.log(" Products inserted successfully!");
+//     console.log("✅ Products inserted successfully!");
 //     process.exit();
 //   } catch (error) {
-//     console.error(" Seed error:", error.message);
+//     console.error("❌ Seed error:", error.message);
 //     process.exit(1);
 //   }
 // }

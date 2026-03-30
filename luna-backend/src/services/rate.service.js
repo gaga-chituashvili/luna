@@ -1,4 +1,4 @@
-const { Rate } = require("@/models/rate-schema");
+const { Rate } = require("../models/rate-schema");
 const { z } = require("zod");
 
 /* ---------- VALIDATION SCHEMA ---------- */
