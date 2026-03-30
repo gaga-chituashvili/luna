@@ -1,6 +1,6 @@
-const { UserSchema } = require("../models/user-schema");
+const { UserSchema } = require("@/models/user-schema");
 const bcrypt = require("bcryptjs");
-const { signToken } = require("../utils/jwt");
+const { signToken } = require("@/utils/jwt");
 const { z } = require("zod");
 
 async function registerUser(req, res) {

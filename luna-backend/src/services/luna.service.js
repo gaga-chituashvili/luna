@@ -1,4 +1,4 @@
-const { CoffeeSchema } = require("../models/coffee-schema");
+const { CoffeeSchema } = require("@/models/coffee-schema");
 const { z } = require("zod");
 const { Op } = require("sequelize");
 

@@ -8,19 +8,19 @@ const port = process.env.PORT || 3000;
 
 app.use(cors());
 
-const authRouter = require("./routes/auth-route.js");
-const lunaRouter = require("./routes/luna-route.js");
-const rateRouter = require("./routes/rate-route.js");
-const cartRouter = require("./routes/order-route.js");
+const authRouter = require("@/routes/auth-route.js");
+const lunaRouter = require("@/routes/luna-route.js");
+const rateRouter = require("@/routes/rate-route.js");
+const cartRouter = require("@/routes/order-route.js");
 
-const { sequelize } = require("./utils/db");
+const { sequelize } = require("@/utils/db");
 
-require("./models/user-schema");
-require("./models/coffee-schema");
+require("@/models/user-schema");
+require("@/models/coffee-schema");
 
 const swaggerUI = require("swagger-ui-express");
-const { generateOpenApiDocs: generateProductDocs } = require("./utils/swaggerProductConfig.js");
-const { generateOpenApiDocs: generateRateDocs } = require("./utils/swaggerRateConfig.js");
+const { generateOpenApiDocs: generateProductDocs } = require("@/utils/swaggerProductConfig.js");
+const { generateOpenApiDocs: generateRateDocs } = require("@/utils/swaggerRateConfig.js");
 
 const productDoc = generateProductDocs();
 const rateDoc = generateRateDocs();

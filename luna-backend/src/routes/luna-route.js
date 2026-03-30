@@ -1,17 +1,17 @@
 const express = require("express");
 const router = express.Router();
-const upload = require("../middlewares/upload");
+const upload = require("@/middlewares/upload");
 
-const { authMiddleware } = require("../middlewares/auth.middlewares");
-const { isAdmin } = require("../middlewares/isAdmin");
+const { authMiddleware } = require("@/middlewares/auth.middlewares");
+const { isAdmin } = require("@/middlewares/isAdmin");
 
 const {
   createProduct,
   createProductsBulk,
   getAllProducts,
-} = require("../services/luna.service");
+} = require("@/services/luna.service");
 
-const { Coffee } = require("../models/coffee-schema");
+const { Coffee } = require("@/models/coffee-schema");
 
 router.post(
   "/products",

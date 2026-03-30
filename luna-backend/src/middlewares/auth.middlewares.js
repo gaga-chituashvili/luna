@@ -1,5 +1,5 @@
-const { UserSchema } = require('../models/user-schema');
-const { verifyToken } = require('../utils/jwt');
+const { UserSchema } = require('@/models/user-schema');
+const { verifyToken } = require('@/utils/jwt');
 
 const authMiddleware = async (req, res, next) => {
   const authHeader = req.headers.authorization;
