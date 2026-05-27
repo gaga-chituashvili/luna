@@ -12,6 +12,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { useAuth } from "@/api/api /hooks/useAuth";
 
 export const Header = () => {
   const cart = useCartStore((state) => state.cart);
@@ -21,6 +22,7 @@ export const Header = () => {
 
   const navigate = useNavigate();
   const visible = useScrollDirection();
+  const { user } = useAuth();
 
   const pathname = useRouterState({
     select: (state) => state.location.pathname,
@@ -31,6 +33,14 @@ export const Header = () => {
       window.location.reload();
     } else {
       navigate({ to: ROUTES.home });
+    }
+  };
+
+  const handleUserClick = () => {
+    if (user) {
+      navigate({ to: ROUTES.profile });
+    } else {
+      navigate({ to: ROUTES.register });
     }
   };
 
@@ -60,6 +70,7 @@ export const Header = () => {
         </nav>
 
         <div className="flex items-center gap-5">
+          {/* Search */}
           <div className="relative flex items-center">
             {!openSearch && (
               <Search
@@ -67,7 +78,6 @@ export const Header = () => {
                 onClick={() => setOpenSearch(true)}
               />
             )}
-
             {openSearch && (
               <input
                 autoFocus
@@ -76,34 +86,23 @@ export const Header = () => {
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
-                    navigate({
-                      to: ROUTES.shop,
-                      search: { q: query },
-                    });
+                    navigate({ to: ROUTES.shop, search: { q: query } });
                     setOpenSearch(false);
                   }
                 }}
                 placeholder="Search coffee..."
-                className="
-      w-44
-      bg-transparent
-      text-sm
-      text-white
-      placeholder:text-gray-400
-      border-b border-[#825444]/60
-      focus:border-[#c48a6a]
-      transition-colors duration-200
-      outline-none
-      px-2 py-1
-      ml-1
-    "
+                className="w-44 bg-transparent text-sm text-white placeholder:text-gray-400 border-b border-[#825444]/60 focus:border-[#c48a6a] transition-colors duration-200 outline-none px-2 py-1 ml-1"
               />
             )}
           </div>
-          <User
-            onClick={() => navigate({ to: ROUTES.log })}
-            className="w-5 h-5 cursor-pointer hover:opacity-70"
-          />
+
+          {/* User icon — profile if logged in, register if not */}
+          <div className="relative" onClick={handleUserClick}>
+            <User className="w-5 h-5 cursor-pointer hover:opacity-70" />
+            {user && (
+              <span className="absolute -top-1.5 -right-1.5 w-2 h-2 rounded-full bg-[#c87941]" />
+            )}
+          </div>
 
           {/* Cart */}
           <div className="relative">
@@ -111,7 +110,6 @@ export const Header = () => {
               className="w-5 h-5 cursor-pointer hover:opacity-70"
               onClick={() => setOpenCart(true)}
             />
-
             {cart.length > 0 && (
               <span className="absolute -top-2 -right-2 bg-[#825444] text-xs rounded-full px-1.5 py-0.5">
                 {cart.length}
@@ -126,7 +124,6 @@ export const Header = () => {
                 <Menu className="h-6 w-6" />
               </button>
             </PopoverTrigger>
-
             <PopoverContent
               align="end"
               className="w-56 mt-3 bg-[#111] border border-white/10 text-white rounded-xl p-6"
