@@ -2,6 +2,7 @@ import { useState, type ChangeEvent } from "react";
 import { LoginForm } from "@/component/login/LoginForm";
 import { validateLoginForm } from "@/api/utils/login.validate";
 import type { LoginFormData, LoginFormErrors } from "@/api/type/login.types";
+import { useAuthStore } from "@/store/authStore";
 
 const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:3000";
 
@@ -16,6 +17,7 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [serverError, setServerError] = useState("");
+  const fetchUser = useAuthStore((state) => state.fetchUser);
 
   const handleChangeField = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -51,8 +53,8 @@ export default function LoginPage() {
         return;
       }
 
-      // Save token & redirect
       localStorage.setItem("token", data.token);
+      await fetchUser();
       window.location.href = "/";
     } catch {
       setServerError("Could not connect to the server");
@@ -70,7 +72,6 @@ export default function LoginPage() {
       }}
     >
       <div className="w-full max-w-md">
-        {/* Header */}
         <div className="text-center mb-10">
           <h1
             className="text-4xl font-bold text-white mb-2"

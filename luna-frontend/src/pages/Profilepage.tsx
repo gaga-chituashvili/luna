@@ -1,11 +1,11 @@
-import { useAuth } from "@/api/api /hooks/useAuth";
+import { useAuthStore } from "@/store/authStore";
 import { useNavigate } from "@tanstack/react-router";
 import { ROUTES } from "@/routes/paths";
 import { useEffect } from "react";
 import { User, Mail, AtSign, Calendar, LogOut } from "lucide-react";
 
 export default function ProfilePage() {
-  const { user, loading, logout } = useAuth();
+  const { user, loading, logout } = useAuthStore();
   const navigate = useNavigate();
 
   useEffect(() => {

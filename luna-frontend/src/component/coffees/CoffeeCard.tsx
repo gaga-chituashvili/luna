@@ -1,7 +1,8 @@
 import { useCartStore } from "@/store/cartStore";
+import { useAuthStore } from "@/store/authStore";
 import type { Coffee } from "@/api/type/coffees.types";
 import { Button } from "@/component/ui/Button";
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import { ROUTES } from "@/routes/paths";
 
 type Props = {
@@ -10,6 +11,16 @@ type Props = {
 
 export const CoffeeCard = ({ coffee }: Props) => {
   const addToCart = useCartStore((state) => state.addToCart);
+  const user = useAuthStore((state) => state.user);
+  const navigate = useNavigate();
+
+  const handleAddToCart = () => {
+    if (!user) {
+      navigate({ to: ROUTES.register });
+      return;
+    }
+    addToCart(coffee);
+  };
 
   return (
     <section className="bg-neutral-900 rounded-3xl p-6 text-center flex flex-col">
@@ -38,7 +49,7 @@ export const CoffeeCard = ({ coffee }: Props) => {
           <Button variant="outline">View details</Button>
         </Link>
 
-        <Button variant="default" onClick={() => addToCart(coffee)}>
+        <Button variant="default" onClick={handleAddToCart}>
           Add to cart
         </Button>
       </div>

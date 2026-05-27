@@ -12,7 +12,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { useAuth } from "@/api/api /hooks/useAuth";
+import { useAuthStore } from "@/store/authStore";
 
 export const Header = () => {
   const cart = useCartStore((state) => state.cart);
@@ -22,7 +22,7 @@ export const Header = () => {
 
   const navigate = useNavigate();
   const visible = useScrollDirection();
-  const { user } = useAuth();
+  const user = useAuthStore((state) => state.user);
 
   const pathname = useRouterState({
     select: (state) => state.location.pathname,
