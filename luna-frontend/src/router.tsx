@@ -10,7 +10,9 @@ import Contact from "@/pages/Contact";
 import MainLayout from "@/layout/MainLayout";
 import { ROUTES } from "@/routes/paths";
 import { DetailsCoffee } from "@/component/Details/DetailsCoffee";
-import Log from "@/pages/RegisterPage";
+import RegisterPage from "@/pages/RegisterPage";
+import LoginPage from "./pages/LoginPage";
+import ProfilePage from "./pages/Profilepage";
 
 const rootRoute = createRootRoute({
   component: MainLayout,
@@ -45,10 +47,22 @@ const detailsCoffeeRoute = createRoute({
   component: DetailsCoffee,
 });
 
-const logRoute = createRoute({
+const registerRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: ROUTES.log,
-  component: Log,
+  path: ROUTES.register,
+  component: RegisterPage,
+});
+
+const loginRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: ROUTES.login,
+  component: LoginPage,
+});
+
+const profileRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: ROUTES.profile,
+  component: ProfilePage,
 });
 
 const routeTree = rootRoute.addChildren([
@@ -57,7 +71,9 @@ const routeTree = rootRoute.addChildren([
   ourStoryRoute,
   contactRoute,
   detailsCoffeeRoute,
-  logRoute,
+  registerRoute,
+  loginRoute,
+  profileRoute,
 ]);
 
 export const router = createRouter({

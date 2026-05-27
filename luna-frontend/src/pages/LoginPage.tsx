@@ -1,28 +1,21 @@
 import { useState, type ChangeEvent } from "react";
-import { RegisterForm } from "@/component/register/RegisterForm";
-import { SuccessState } from "@/component/register/SuccessState";
-import { validateRegisterForm } from "@/api/utils/register.validate";
-import type { FormData, FormErrors } from "@/api/type/register.types";
+import { LoginForm } from "@/component/login/LoginForm";
+import { validateLoginForm } from "@/api/utils/login.validate";
+import type { LoginFormData, LoginFormErrors } from "@/api/type/login.types";
 
 const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:3000";
 
-const INITIAL_FORM: FormData = {
-  fullName: "",
-  username: "",
+const INITIAL_FORM: LoginFormData = {
   email: "",
   password: "",
-  confirmPassword: "",
-  birthDate: "",
 };
 
-export default function RegisterPage() {
-  const [form, setForm] = useState<FormData>(INITIAL_FORM);
-  const [errors, setErrors] = useState<FormErrors>({});
+export default function LoginPage() {
+  const [form, setForm] = useState<LoginFormData>(INITIAL_FORM);
+  const [errors, setErrors] = useState<LoginFormErrors>({});
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirm, setShowConfirm] = useState(false);
   const [loading, setLoading] = useState(false);
   const [serverError, setServerError] = useState("");
-  const [success, setSuccess] = useState(false);
 
   const handleChangeField = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -32,7 +25,7 @@ export default function RegisterPage() {
   };
 
   const handleSubmit = async () => {
-    const errs = validateRegisterForm(form);
+    const errs = validateLoginForm(form);
     if (Object.keys(errs).length > 0) {
       setErrors(errs);
       return;
@@ -42,36 +35,31 @@ export default function RegisterPage() {
     setServerError("");
 
     try {
-      const res = await fetch(`${API_URL}/auth/register`, {
+      const res = await fetch(`${API_URL}/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          fullName: form.fullName,
-          username: form.username,
           email: form.email,
           password: form.password,
-          birthDate: form.birthDate || null,
         }),
       });
 
       const data = await res.json();
 
       if (!res.ok) {
-        setServerError(data.message ?? "Something went wrong");
+        setServerError(data.message ?? "Invalid email or password");
         return;
       }
 
-      setSuccess(true);
+      // Save token & redirect
+      localStorage.setItem("token", data.token);
+      window.location.href = "/";
     } catch {
       setServerError("Could not connect to the server");
     } finally {
       setLoading(false);
     }
   };
-
-  if (success) {
-    return <SuccessState firstName={form.fullName.split(" ")[0]} />;
-  }
 
   return (
     <div
@@ -82,28 +70,27 @@ export default function RegisterPage() {
       }}
     >
       <div className="w-full max-w-md">
+        {/* Header */}
         <div className="text-center mb-10">
           <h1
             className="text-4xl font-bold text-white mb-2"
             style={{ fontFamily: "Georgia, serif" }}
           >
-            Join <span style={{ color: "#c87941" }}>Luna.</span>
+            Welcome back to <span style={{ color: "#c87941" }}>Luna.</span>
           </h1>
           <p style={{ color: "#7a6055" }} className="text-sm">
-            Create an account and enjoy the full experience
+            Sign in to your account
           </p>
         </div>
 
-        <RegisterForm
+        <LoginForm
           form={form}
           errors={errors}
           serverError={serverError}
           loading={loading}
           showPassword={showPassword}
-          showConfirm={showConfirm}
           onChangeField={handleChangeField}
           onTogglePassword={() => setShowPassword((v) => !v)}
-          onToggleConfirm={() => setShowConfirm((v) => !v)}
           onSubmit={handleSubmit}
         />
       </div>
