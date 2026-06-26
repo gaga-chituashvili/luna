@@ -3,7 +3,7 @@ import type {
   ContactInfoItem,
   SocialLink,
   ContactLocationData,
-} from "@/api/type/Contact.types";
+} from "@/types/Contact.types";
 
 export const contactHeroData: ContactHeroData = {
   title: "Get in Touch with",

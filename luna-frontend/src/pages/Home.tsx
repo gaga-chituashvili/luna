@@ -1,11 +1,11 @@
-import { Shop } from "@/component/Shop";
-import { Ritual } from "@/component/ritual/Ritual";
-import { AboutLuna } from "@/component/aboutLuna/AboutLuna";
-import { WhyLuna } from "@/component/whyuna/WhyLuna";
-import { RateSlider } from "@/component/rate/RateSlider";
-import { Coffees } from "@/component/coffees/Coffees";
+import { Shop } from "@/features/shop/Shop";
+import { Ritual } from "@/features/landing/Ritual";
+import { AboutLuna } from "@/features/landing/AboutLuna";
+import { WhyLuna } from "@/features/landing/WhyLuna";
+import { RateSlider } from "@/features/rate/RateSlider";
+import { Coffees } from "@/features/coffees/Coffees";
 
-export const Home = () => {
+export default function Home() {
   return (
     <>
       <Shop />
@@ -16,4 +16,4 @@ export const Home = () => {
       <Ritual />
     </>
   );
-};
+}

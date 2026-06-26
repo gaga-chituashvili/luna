@@ -3,7 +3,7 @@ import type {
   WhyLunaCard,
   AboutLunaData,
   RitualData,
-} from "@/api/type/homeData.types";
+} from "@/types/homeData.types";
 import coffee from "@/assets/coffee.png";
 import lunaframe1 from "@/assets/lunaframe1.png";
 import lunaframe2 from "@/assets/lunaframe2.png";

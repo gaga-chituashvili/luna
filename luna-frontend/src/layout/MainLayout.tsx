@@ -1,7 +1,7 @@
 import { Outlet } from "@tanstack/react-router";
-import { Header } from "@/component/header/Header";
-import { Footer } from "@/component/footer/Footer";
-import { ScrollToTop } from "@/component/ui/ScrollToTop";
+import { Header } from "@/components/NavBar";
+import { Footer } from "@/components/Footer";
+import { ScrollToTop } from "@/components/ui/ScrollToTop";
 
 const MainLayout = () => {
   return (
