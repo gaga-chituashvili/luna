@@ -6,8 +6,6 @@ dotenv.config({ path: "./.env", quiet: true });
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(cors());
-
 const authRouter = require("./routes/auth-route.js");
 const lunaRouter = require("./routes/luna-route.js");
 const rateRouter = require("./routes/rate-route.js");
@@ -19,8 +17,12 @@ require("./models/user-schema");
 require("./models/coffee-schema");
 
 const swaggerUI = require("swagger-ui-express");
-const { generateOpenApiDocs: generateProductDocs } = require("./utils/swaggerProductConfig.js");
-const { generateOpenApiDocs: generateRateDocs } = require("./utils/swaggerRateConfig.js");
+const {
+  generateOpenApiDocs: generateProductDocs,
+} = require("./utils/swaggerProductConfig.js");
+const {
+  generateOpenApiDocs: generateRateDocs,
+} = require("./utils/swaggerRateConfig.js");
 
 const productDoc = generateProductDocs();
 const rateDoc = generateRateDocs();
@@ -38,6 +40,13 @@ const combinedDoc = {
     },
   },
 };
+
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL,
+    credentials: true,
+  }),
+);
 
 app.use(express.json());
 
