@@ -1,4 +1,4 @@
-import type { CartModalData } from "@/api/type/CartModal.types";
+import type { CartModalData } from "@/types/CartModal.types";
 
 export const cartModalData: CartModalData = {
   title: "Cart",
