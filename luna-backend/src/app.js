@@ -11,7 +11,7 @@ const lunaRouter = require("./routes/luna-route.js");
 const rateRouter = require("./routes/rate-route.js");
 const cartRouter = require("./routes/order-route.js");
 
-const { sequelize } = require("./utils/db");
+const { sequelize } = require("./config/db");
 
 require("./models/user-schema");
 require("./models/coffee-schema");
