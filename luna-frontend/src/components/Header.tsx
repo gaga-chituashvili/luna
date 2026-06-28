@@ -9,7 +9,7 @@ import { useRouterState, useNavigate } from "@tanstack/react-router";
 import { useScrollDirection } from "@/hooks/useScrollDirection";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { useAuthStore } from "@/store/authStore";
-import { Wrapper } from "@/components/Wrapper";
+import { Wrapper } from "@/components/shared/wrapper";
 
 export const Header = () => {
   const cart = useCartStore((state) => state.cart);
